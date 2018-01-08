@@ -30,8 +30,8 @@ devtools::install_github(package, auth_token = github_token)
 run credentials
 ```{r setup, include = FALSE}
 url <- 'https://datacatalog.worldbank.org/'
-username <- '***REMOVED***'
-password <- '***REMOVED***'
+username <- 'USERNAME'
+password <- 'PASSWORD'
 credentials <- dkanr::dkanr_setup(url, username, password)
 ```
 

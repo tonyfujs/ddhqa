@@ -1,0 +1,73 @@
+---
+title: "Vignette Title"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+# DDHQA WALKTHROUGH
+This package automates different quality checks for the World Bank's Data Catalog
+
+## Set up
+```{r setup, include = FALSE}
+package <- 'tonyfujs/ddhconnect'
+github_token <- '***REMOVED***'
+httr::set_config(httr::config(ssl_verifypeer = 0L))
+devtools::install_github(package, auth_token = github_token)
+)
+```
+
+run credentials
+```{r setup, include = FALSE}
+url <- 'https://datacatalog.worldbank.org/'
+username <- '***REMOVED***'
+password <- '***REMOVED***'
+credentials <- dkanr::dkanr_setup(url, username, password)
+```
+
+## GENERAL WORK FLOW
+1. Gather all metadata [datasets/resources]
+2. Field names being used/unused [datasets/resources]
+3. File extension match listed type [resources]
+4. External links are valid/check 404 [resources]
+
+### [ 1 ] gather all metadata
+NOTE: need to allow for a subset, maybe make get_metadata a public function
+also need to come up with a better name
+In order to run the other analyses, you need metadata data for a subset of all of the datasets or resources.
+```{r setup, include = FALSE}
+# datasets
+get_metadata_datasets()
+# resources
+get_metadata_resources()
+```
+
+You can also take a subset by searching the catalog and passing the nids
+### [ 2 ] checking machine names
+```{r setup, include = FALSE}
+count_machine_names()
+```
+
+### [ 3 ] file extensions
+```{r setup, include = FALSE}
+```
+
+
+
+### [ 4 ] external links
+```{r setup, include = FALSE}
+```
+
+### [ 5 ] missing recommended fields
+
+## Shiny view

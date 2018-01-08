@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1515190620842.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3C3E954A",
+    "lastKnownWriteTime" : 1515191138,
+    "last_content_update" : 1515191138718,
+    "path" : "~/GitHub/ddhqa/R/missing_file_ext.R",
+    "project_path" : "R/missing_file_ext.R",
+    "properties" : {
+        "cursorPosition" : "15,42",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

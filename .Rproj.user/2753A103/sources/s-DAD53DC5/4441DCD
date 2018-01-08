@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1515166904393.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "4441DCD",
+    "lastKnownWriteTime" : 1515183310,
+    "last_content_update" : 1515183310914,
+    "path" : "~/GitHub/ddhqa/tests/testthat/test-file_extensions.R",
+    "project_path" : "tests/testthat/test-file_extensions.R",
+    "properties" : {
+        "cursorPosition" : "16,36",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

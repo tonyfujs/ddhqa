@@ -12,8 +12,8 @@
     "path" : "~/GitHub/ddhqa/tests/testthat/test-file_extensions.R",
     "project_path" : "tests/testthat/test-file_extensions.R",
     "properties" : {
-        "cursorPosition" : "16,36",
-        "scrollLine" : "0"
+        "cursorPosition" : "15,36",
+        "scrollLine" : "2"
     },
     "relative_order" : 3,
     "source_on_save" : false,

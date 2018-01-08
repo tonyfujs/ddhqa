@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1515449128284.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "EDAB14B3",
+    "lastKnownWriteTime" : 1515449392,
+    "last_content_update" : 1515449392734,
+    "path" : "~/GitHub/ddhqa/R/extract_file_path.R",
+    "project_path" : "R/extract_file_path.R",
+    "properties" : {
+        "cursorPosition" : "33,10",
+        "scrollLine" : "20"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1515449047427.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "D98931E9",
+    "lastKnownWriteTime" : 1515166844,
+    "last_content_update" : 1515166844,
+    "path" : "~/GitHub/ddhqa/R/check_resource_links.R",
+    "project_path" : "R/check_resource_links.R",
+    "properties" : {
+        "cursorPosition" : "12,55",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

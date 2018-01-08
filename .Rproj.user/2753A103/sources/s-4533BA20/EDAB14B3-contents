@@ -1,4 +1,3 @@
-
 extract_file_path <- function(resource) {
   # keeping field_link_api because some of those are file extensions
   loc_potential <- c(resource$field_link_api$und[[1]]$url,
@@ -22,13 +21,7 @@ return_file_ext <- function(file_path) {
   return(file_ext)
 }
 
-# omits non file type strings (.com/.io)
-# might not need this if only focusig on field_formats
-# check_valid_file_ext <- function(file_ext) {
-#   return(grep(file_ext, valid_file_ext, ignore.case = TRUE))
-# }
-
-check_valid_ext <- function(file_ext) {
+verify_valid_ext <- function(file_ext) {
   if (file_ext %in% valid_file_ext$file_ext) {
     ext <- file_ext
   } else {

@@ -7,13 +7,13 @@
     "folds" : "",
     "hash" : "0",
     "id" : "4441DCD",
-    "lastKnownWriteTime" : 1515183310,
-    "last_content_update" : 1515183310914,
+    "lastKnownWriteTime" : 1515449708,
+    "last_content_update" : 1515449708692,
     "path" : "~/GitHub/ddhqa/tests/testthat/test-file_extensions.R",
     "project_path" : "tests/testthat/test-file_extensions.R",
     "properties" : {
-        "cursorPosition" : "15,36",
-        "scrollLine" : "2"
+        "cursorPosition" : "19,2",
+        "scrollLine" : "9"
     },
     "relative_order" : 3,
     "source_on_save" : false,

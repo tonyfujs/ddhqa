@@ -1,4 +1,4 @@
-#' check_file_ext.R
+#' compare_file_ext.R
 #'
 #' Check if the resource file extension matches the field_form value
 #'
@@ -9,7 +9,7 @@
 #' @export
 #'
 
-check_file_ext <- function(metadata_resources,
+compare_file_ext <- function(metadata_resources,
                            lovs = ddhconnect::get_lovs()){
 
   field_formats <- vector(mode = "character", length(metadata_resources))
@@ -21,7 +21,8 @@ check_file_ext <- function(metadata_resources,
     field_formats[i] <- extract_field_format(resource, lovs)
     file_exts[i] <- resource %>%
                       extract_file_path %>%
-                      return_file_ext
+                      return_file_ext %>%
+                      check_valid_ext
   }
 
   results <- data.frame(resource_nid = names(metadata_resources),

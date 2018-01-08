@@ -1,4 +1,4 @@
-#' check_file_ext.R
+#' compare_file_ext.R
 #'
 #' Check if the resource file extension matches the field_form value
 #'
@@ -9,7 +9,7 @@
 #' @export
 #'
 
-check_file_ext <- function(metadata_resources,
+compare_file_ext <- function(metadata_resources,
                            lovs = ddhconnect::get_lovs()){
 
   field_formats <- vector(mode = "character", length(metadata_resources))
@@ -21,7 +21,8 @@ check_file_ext <- function(metadata_resources,
     field_formats[i] <- extract_field_format(resource, lovs)
     file_exts[i] <- resource %>%
                       extract_file_path %>%
-                      return_file_ext
+                      return_file_ext %>%
+                      check_valid_ext
   }
 
   results <- data.frame(resource_nid = names(metadata_resources),
@@ -39,16 +40,16 @@ check_file_ext <- function(metadata_resources,
 
 # find field_format, expected val for the file type
 
-# general workflow
+# general workflow but file_exts feels heavy
 # MEERA, THIS IS SPARK NOTATION (>X_X<)
 # field_formats <- metadata_resources %>%
 #   extract_field_format(lovs)
 #
 # file_exts <- metadata_resources %>%
 #   extract_file_path %>%
-#   return_file_ext
+#   return_file_ext %>%
+#   check_file_ext
 #
-# check_valid_file_ext
 
 # CURRENTLY IN DEV
 matching_vals <- function() {

@@ -22,7 +22,7 @@ return_file_ext <- function(file_path) {
 }
 
 verify_valid_ext <- function(file_ext) {
-  if (file_ext %in% valid_file_ext$file_ext) {
+  if (file_ext %in% valid_file_ext$file_ext || is.na(file_ext)) {
     ext <- file_ext
   } else {
     ext <- ""

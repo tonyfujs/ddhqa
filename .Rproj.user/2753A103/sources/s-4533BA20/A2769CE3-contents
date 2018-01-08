@@ -39,16 +39,16 @@ check_file_ext <- function(metadata_resources,
 
 # find field_format, expected val for the file type
 
-# general workflow but file_exts feels heavy
+# general workflow
 # MEERA, THIS IS SPARK NOTATION (>X_X<)
 # field_formats <- metadata_resources %>%
 #   extract_field_format(lovs)
 #
 # file_exts <- metadata_resources %>%
 #   extract_file_path %>%
-#   return_file_ext %>%
-#   check_file_ext
+#   return_file_ext
 #
+# check_valid_file_ext
 
 # CURRENTLY IN DEV
 matching_vals <- function() {

@@ -1,0 +1,37 @@
+list_value_name,tid,allowed_type
+,1365,
+APF,964,apf
+data,1364,
+CSV,14,csv
+CSV ZIP,659,zip
+DBF,1207,dbf
+EXCEL,1194,xls|xlsx
+EXCEL ZIP,871,zip
+GDB,664,gdb
+GeoJSON,1369,geojson|json
+GeoTIFF,1371,tiff
+GIF,667,gif
+JPEG,850,jpg
+KML,22,
+JSON,1368,json
+MDB,1209,mdb
+MPK,1210,mpk
+OTHER,889,
+PDF,839,pdf
+PNG,663,png
+POWERPOINT,18,ppts|ppt
+PYTHON,953,py
+R,954,r
+RASTER,890,
+SD,1212,
+SHP ZIP,957,zip
+SPSS,955,sav|zsav|por
+STATA,956,xls|xlsx|stata
+TAB,891,tsv
+TIFF,952,tiff
+TopoJSON,1370,json
+VECTOR,17,pdf
+WORD,1213,doc|docx
+XML,923,xml
+ZIP,666,zip
+Format Not Specified,1271,

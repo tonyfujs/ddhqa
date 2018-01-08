@@ -1,0 +1,41 @@
+rm(list=ls())
+
+#_________________________________________
+# 1. ddhconnect Import via GitHub
+#_________________________________________
+httr::set_config(httr::config(ssl_verifypeer = 0L))
+package <- 'tonyfujs/ddhconnect'
+branch <- 'master'
+# just include your auth token, under developer settings->personal access tokens
+github_token <- '***REMOVED***'
+library(devtools)
+install_github(package, ref = branch, auth_token = github_token)
+
+
+#_________________________________________
+# 2. Libraries
+#_________________________________________
+library(ddhconnect)
+library(dkanr)
+library(jsonlite)
+
+#_________________________________________
+# 3. ddhconnect Connection Set Up
+#_________________________________________
+url <- 'https://datacatalog.worldbank.org/'
+
+username <- '***REMOVED***'
+password <- '***REMOVED***'
+credentials <- dkanr::dkanr_setup(url, username, password)
+
+
+
+resource_id = 126064
+test_body = create_json_body(values= c(title = "TEST CREATE",
+                                        body ="TEST CREATION OF JSON",
+                                        field_wbddh_resource_type = "443",
+                                        type = "resource"), node_type="resource")
+create_resource(body = test_body,
+               credentials = list(cookie = dkanr::get_cookie(),
+                                  token = dkanr::get_token()),
+               root_url = dkanr::get_url())

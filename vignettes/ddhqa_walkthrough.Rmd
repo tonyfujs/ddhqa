@@ -20,11 +20,10 @@ This package automates different quality checks for the World Bank's Data Catalo
 
 ## Set up
 ```{r setup, include = FALSE}
-package <- 'tonyfujs/ddhconnect'
-github_token <- '***REMOVED***'
+package <- 'tonyfujs/ddhqa'
+github_token <- "YOUR TOKEN"
 httr::set_config(httr::config(ssl_verifypeer = 0L))
 devtools::install_github(package, auth_token = github_token)
-)
 ```
 
 run credentials
@@ -59,15 +58,18 @@ count_machine_names()
 ```
 
 ### [ 3 ] file extensions
+* contains field_format but no file ext
+* contains valid file_ext but no field_format
+* field_format and path ext do not match
+* the incorrect field is being used between the three options (remote file vs. field link api)
 ```{r setup, include = FALSE}
+
 ```
 
-
-
 ### [ 4 ] external links
+* check if external links are valid_file_ext
+* avoid 404 errors
 ```{r setup, include = FALSE}
 ```
 
 ### [ 5 ] missing recommended fields
-
-## Shiny view

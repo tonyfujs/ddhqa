@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1515536345204.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "C44C45F2",
+    "lastKnownWriteTime" : 1515536388,
+    "last_content_update" : 1515536388374,
+    "path" : "~/GitHub/ddhqa/data-raw/add_internal_data.R",
+    "project_path" : "data-raw/add_internal_data.R",
+    "properties" : {
+        "cursorPosition" : "18,0",
+        "scrollLine" : "2"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,22 @@
+machine_name,time_series,geospatial,microdata,form name
+field_wbddh_acronym,1,1,1,Acronym
+field_wbddh_responsible,1,1,1,Are you the responsible TTL for this dataset?
+field_wbddh_collaborator_upi,1,1,1,Collaborator Name(s)
+NA,1,1,1,Collections
+field_wbddh_type_of_license,1,1,1,Custom License Information
+field_wbddh_data_class,1,1,1,Data Classification of a Dataset
+field_wbddh_data_dates,NA,NA,1,Data Collection Dates
+field_wbddh_data_type,1,1,1,Data Type
+body,1,1,1,Description
+field_wbddh_economy_coverage,1,1,1,Economy Coverage
+field_exception_s_,1,1,1,Exception
+field_wbddh_funding_name,NA,NA,1,"Funding Name, Abbreviation, Role"
+field_wbddh_country,1,1,1,Geographical Coverage
+field_wbddh_languages_supported,1,1,1,Languages Supported
+field_license_wbddh,1,1,1,License
+NA,1,1,1,Other Collections
+field_wbddh_other_producer,NA,NA,1,"Other Producer (s) Name, Affiliation, Role"
+field_wbddh_periodicity,1,1,NA,Periodicity
+title,1,1,1,Title
+field_topic,1,1,1,Topics
+field_wbddh_dsttl_upi,1,1,1,TTL Name or UPI

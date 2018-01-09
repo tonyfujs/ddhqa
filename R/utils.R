@@ -11,6 +11,10 @@ extract_file_path <- function(resource) {
   loc_file <- loc_potential %>%
     unlist()
 
+  if (is.null(loc_file)) {
+    loc_file <- NA
+  }
+
   return(loc_file)
 }
 

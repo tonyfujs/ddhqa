@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1515535170137.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "601FF288",
+    "lastKnownWriteTime" : 0,
+    "last_content_update" : 1515535170137,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "3F407EE4",
+        "caption" : "lovs",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=lovs&cache_key=3F407EE4",
+        "displayedObservations" : 739,
+        "environment" : "",
+        "object" : "lovs",
+        "preview" : 0,
+        "totalObservations" : 739,
+        "variables" : 4
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

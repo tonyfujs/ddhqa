@@ -5,14 +5,14 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3620264181",
+    "hash" : "0",
     "id" : "3515C52D",
-    "lastKnownWriteTime" : 1515528414,
-    "last_content_update" : 1515528414315,
+    "lastKnownWriteTime" : 1515529148,
+    "last_content_update" : 1515529148232,
     "path" : "~/GitHub/ddhqa/R/utils.R",
     "project_path" : "R/utils.R",
     "properties" : {
-        "cursorPosition" : "13,0",
+        "cursorPosition" : "16,0",
         "scrollLine" : "0"
     },
     "relative_order" : 2,

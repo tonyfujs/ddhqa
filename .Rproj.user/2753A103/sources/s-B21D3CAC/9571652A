@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1515514832307.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "9571652A",
+    "lastKnownWriteTime" : 1515515233,
+    "last_content_update" : 1515515233,
+    "path" : "~/GitHub/ddhqa/R/get_metadata_datasets.R",
+    "project_path" : "R/get_metadata_datasets.R",
+    "properties" : {
+        "cursorPosition" : "5,57",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

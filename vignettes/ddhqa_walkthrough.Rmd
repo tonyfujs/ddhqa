@@ -41,30 +41,58 @@ credentials <- dkanr::dkanr_setup(url, username, password)
 4. External links are valid/check 404 [resources]
 
 ### [ 1 ] gather all metadata
-NOTE: need to allow for a subset, maybe make get_metadata a public function
-also need to come up with a better name
-In order to run the other analyses, you need metadata data for a subset of all of the datasets or resources.
+The first step to running the quality assurance functions is to gather all the metadata for the nodes you are interested in.
+You can do this by getting a list of all the nodes (`nids`) you are interested in analyzing.
 ```{r setup, include = FALSE}
 # datasets
-get_metadata_datasets()
+datasets_nids <- get_datasets_list(data_type = "all")
+datasets <- get_metadata_datasets(datasets_nids)
+
 # resources
-get_metadata_resources()
+resources_nids <- get_resources_list(datasets)
+resources <- get_metadata_resources(resources_nids)
 ```
 
-You can also take a subset by searching the catalog and passing the nids
-### [ 2 ] checking machine names
+You may also pass your own subset for nids into the functions.
+
+### [ 2 ] checking frequency of metadata fields
+Call `count_machine_names()` to have a better understanding to see which metadata fields are being used.
+These results are will display the frequency of use as well as frequency of the field being empty (null or empty list).
+
 ```{r setup, include = FALSE}
-count_machine_names()
+# datasets
+datasets_nids <- get_datasets_list(data_type = "all")
+datasets <- get_metadata_datasets(datasets_nids)
+count_machine_names(datasets)
+
+# resources
+resources_nids <- get_resources_list(datasets)
+resources <- get_metadata_resources(resources_nids)
+count_machine_names(resources)
 ```
 
 ### [ 3 ] file extensions
-* contains field_format but no file ext
-* contains valid file_ext but no field_format
-* field_format and path ext do not match
-* the incorrect field is being used between the three options (remote file vs. field link api)
-```{r setup, include = FALSE}
+There are multiple checks to compare resource file extensions:
+  * contains `field_format` but is missing a path with the expected file extension
+  * contains valid file extension but unpopulated field_format
+  * field_format and file extension do not match
+  * the incorrect field is being used between the three options (remote file vs. field link api)
 
+First, grab the resources' metadata. Then view the `field_form` and file extension for each of those nids.
+```{r setup, include = FALSE}
+assemble_file_ext(resources)
 ```
+
+You can then select which issues you would like to explore.
+```{r setup, include = FALSE}
+# field_format and file extension do not match
+check_file_ext(resources)
+```
+
+
+
+
+
 
 ### [ 4 ] external links
 * check if external links are valid_file_ext

@@ -2,7 +2,7 @@
 % Please edit documentation in R/assemble_file_ext.R
 \name{assemble_file_ext}
 \alias{assemble_file_ext}
-\title{assemble_file_ext.R}
+\title{assemble_file_ext}
 \usage{
 assemble_file_ext(metadata_resources, lovs = ddhconnect::get_lovs())
 }

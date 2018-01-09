@@ -5,9 +5,12 @@ extract_file_path <- function(resource) {
                      resource$field_upload$und[[1]]$uri)
 
   # find the file path, should only be one per resource
+  # need to add a check to make sure this is true
+
   # find a better way to extract
   loc_file <- loc_potential %>%
     unlist()
+
   return(loc_file)
 }
 

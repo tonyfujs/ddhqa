@@ -42,7 +42,8 @@ credentials <- dkanr::dkanr_setup(url, username, password)
 
 ### [ 1 ] gather all metadata
 The first step to running the quality assurance functions is to gather all the metadata for the nodes you are interested in.
-You can do this by getting a list of all the nodes (`nids`) you are interested in analyzing.
+
+If you would like to look at a larger portion of the datasets, use this approach. Be sure if filter by `data_type` if you are interested.
 ```{r setup, include = FALSE}
 # datasets
 datasets_nids <- get_datasets_list(data_type = "all")
@@ -53,7 +54,7 @@ resources_nids <- get_resources_list(datasets)
 resources <- get_metadata_resources(resources_nids)
 ```
 
-You may also pass your own subset for nids into the functions.
+You may also pass your own subset for nids into the functions. You can do this by getting a list of all the nodes (`nids`) you are interested in analyzing.
 
 ### [ 2 ] checking frequency of metadata fields
 Call `count_machine_names()` to have a better understanding to see which metadata fields are being used.
@@ -61,13 +62,9 @@ These results are will display the frequency of use as well as frequency of the 
 
 ```{r setup, include = FALSE}
 # datasets
-datasets_nids <- get_datasets_list(data_type = "all")
-datasets <- get_metadata_datasets(datasets_nids)
 count_machine_names(datasets)
 
 # resources
-resources_nids <- get_resources_list(datasets)
-resources <- get_metadata_resources(resources_nids)
 count_machine_names(resources)
 ```
 
@@ -89,15 +86,11 @@ You can then select which issues you would like to explore.
 check_file_ext(resources)
 ```
 
-
-
-
-
-
 ### [ 4 ] external links
-* check if external links are valid_file_ext
+* check if external links are valid
 * avoid 404 errors
 ```{r setup, include = FALSE}
+check_resource_links(resources)
 ```
 
 ### [ 5 ] missing recommended fields

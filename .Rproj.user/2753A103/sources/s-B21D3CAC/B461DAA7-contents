@@ -1,4 +1,4 @@
-#' check_file_ext.R
+#' check_file_ext
 #'
 #' Check if the resource file extension matches the field_form value
 #'

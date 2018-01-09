@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_file_ext.R
 \name{check_file_ext}
 \alias{check_file_ext}
-\title{check_file_ext.R}
+\title{check_file_ext}
 \usage{
 check_file_ext(results, lookup = lookup_ext_to_form)
 }

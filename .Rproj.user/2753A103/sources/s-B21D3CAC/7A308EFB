@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1515527065357.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2464052447",
+    "id" : "7A308EFB",
+    "lastKnownWriteTime" : 1515521723,
+    "last_content_update" : 1515521723,
+    "path" : "~/GitHub/ddhqa/R/get_metadata_resources.R",
+    "project_path" : "R/get_metadata_resources.R",
+    "properties" : {
+        "cursorPosition" : "0,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

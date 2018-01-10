@@ -11,6 +11,7 @@ lookup_ext_to_form <- readr::read_csv("./data-raw/lookup_ext_to_form.csv")
 
 recommended_fields <- readr::read_csv("./data-raw/recommended_fields.csv")
 
+
 # STEP 4: Save table -------------------------------------------------------
 devtools::use_data(valid_file_ext,
                    lookup_ext_to_form,

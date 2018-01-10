@@ -13,24 +13,15 @@
 # need to test on resources, currently pulls only from datasets
 
 count_machine_names <- function(all_data_fields){
+
     empty_fields = c()
     used_fields = c()
     for (metadata in all_data_fields){
       print(metadata$nid)
 
-      # flatten json
-      metadata_df <- unlist(metadata)
+      # convert json metadata to dataframe
+      metadata_df <- format_metadata_df(metadata)
 
-      # convert all empty string to missing vals
-      metadata_df[metadata_df==""] <- NA
-
-      # extract machine names, remove nested information
-      machine_names <- names(metadata_df) %>%
-        as.character %>%
-        strsplit(".",fixed = TRUE) %>%
-        map_chr(c(1))
-
-      names(metadata_df) = machine_names
       exists = unique(names(na.omit(metadata_df)))
       contain_na = unique(names(metadata_df[is.na(metadata_df)]))
       # since json contains multiple keys per machine name

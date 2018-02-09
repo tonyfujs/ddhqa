@@ -24,17 +24,17 @@ check_recom_fields <- function (metadata_datasets,
     # in case the tids change in the future
     # might want to create a function
     tid <- unlist(dataset$field_wbddh_data_type)
-    ui_name <- lovs[lovs$tid == tid,]$list_value_name
+    ui_name <- lovs[lovs$tid == tid, ]$list_value_name
     rec_fields <- recommended_fields[which(recommended_fields$data_type == ui_name &
-                                            !is.na(recommended_fields$recommended)),]$machine_name
+                                            !is.na(recommended_fields$recommended)), ]$machine_name
 
     # identify missing recommended_fields
     mia_rec <- rec_fields[!(rec_fields %in% dataset_df$metadata_names)]
 
     # need to extract populated
-    exist_rec <- dataset_df[which(dataset_df$metadata_names %in% rec_fields),]
+    exist_rec <- dataset_df[which(dataset_df$metadata_names %in% rec_fields), ]
     used_rec <- unique(na.omit(exist_rec)$metadata_names)
-    unused_rec <- exist_rec[!(exist_rec$metadata_names %in% used_rec),]$metadata_names
+    unused_rec <- exist_rec[!(exist_rec$metadata_names %in% used_rec), ]$metadata_names
 
     print(dataset$nid)
     print(mia_rec[!is.na(mia_rec)])

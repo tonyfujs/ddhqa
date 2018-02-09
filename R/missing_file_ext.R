@@ -10,8 +10,8 @@
 #'
 
 missing_file_ext <- function(df) {
-  complete_formats <- df[!is.na(df$field_formats),]
+  complete_formats <- df[!is.na(df$field_formats), ]
   # need to map to csv here
 
-  complete_exts <- df[!is.na(df$file_exts),]
+  complete_exts <- df[!is.na(df$file_exts), ]
 }

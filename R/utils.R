@@ -9,7 +9,8 @@ extract_file_path <- function(resource) {
 
   # find a better way to extract
   loc_file <- loc_potential %>%
-    unlist()
+    unlist() %>%
+    unname()
 
   if (is.null(loc_file)) {
     loc_file <- NA
@@ -23,8 +24,8 @@ return_file_ext <- function(file_path) {
   if (is.null(file_path)) {
     file_ext <- NA
   } else {
-    file_name = basename(file_path)
-    file_ext = tolower(tools::file_ext(file_name))
+    file_name <- basename(file_path)
+    file_ext <- tolower(tools::file_ext(file_name))
   }
   return(file_ext)
 }

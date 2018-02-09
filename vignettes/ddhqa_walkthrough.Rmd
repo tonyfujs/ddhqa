@@ -94,6 +94,9 @@ check_resource_links(resources)
 ```
 
 ### [ 5 ] missing recommended fields
+While datasets have mandatory fields, it is important to 
+
+
 ```{r setup, include = FALSE}
 check_recom_fields(resources)
 ```

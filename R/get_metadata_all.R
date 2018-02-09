@@ -21,7 +21,7 @@ get_metadata_all <- function(nids,
      metadata_node <- ddhconnect::get_metadata(nid = node,
                                    credentials = credentials)
      metadata_all[[node]] <- metadata_node
-   }, error=function(e){
+   }, error = function(e) {
      cat("ERROR :", node, conditionMessage(e), "\n")
      })
  }

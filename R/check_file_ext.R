@@ -12,7 +12,7 @@
 check_file_ext <- function(results,
                            lookup = lookup_ext_to_form){
 
-  populated_format <- results[!is.na(results$field_formats),]
+  populated_format <- results[!is.na(results$field_formats), ]
 
   temp <- merge(populated_format,
                 lookup_ext_to_form,
@@ -24,8 +24,9 @@ check_file_ext <- function(results,
                           pattern = temp$allowed_type,
                           x = temp$file_exts)
 
-  not_matching <- temp[which(temp$matching == 0 | is.na(temp$matching)),]
+  not_matching <- temp[which(temp$matching == 0 | is.na(temp$matching)), ]
 
-  clean_not_matching <- not_matching[c("resource_nid", "field_formats", "allowed_type", "file_exts")]
+  fields <- c("resource_nid", "field_formats", "allowed_type", "file_exts")
+  clean_not_matching <- not_matching[fields]
   return(clean_not_matching)
 }

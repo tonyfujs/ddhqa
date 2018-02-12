@@ -4,17 +4,16 @@
 \alias{check_recom_fields}
 \title{check_recom_fields}
 \usage{
-check_recom_fields(metadata_datasets, credentials = list(cookie =
-  dkanr::get_cookie(), token = dkanr::get_token()))
+check_recom_fields(dataset)
 }
 \arguments{
-\item{metadata_datasets}{list: object returned by get_metadata_datasets}
+\item{datasets}{list: object returned by get_metadata()}
 
 \item{lovs}{dataframe: object returned by the get_lovs() function}
 }
 \value{
-dataframe
+vector
 }
 \description{
-Check if the resource file extension matches the field_form value
+Check which recommended fields are missing
 }

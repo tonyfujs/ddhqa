@@ -9,7 +9,7 @@
 #'
 #'
 
-
+# TODO can use this if doing count for machine names?
 get_resources_list <- function(datasets_metadata,
                                rand_count = 100000,
                                credentials = list(cookie = dkanr::get_cookie(),

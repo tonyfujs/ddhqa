@@ -4,10 +4,10 @@
 \alias{check_file_ext}
 \title{check_file_ext}
 \usage{
-check_file_ext(results, lookup = lookup_ext_to_form)
+check_file_ext(metadata_resource, lookup = lookup_ext_to_form)
 }
 \arguments{
-\item{results}{dataframe: object returned by assemble_file_ext}
+\item{metadata_resource}{dataframe: object returned by assemble_file_ext}
 
 \item{lovs}{dataframe: object returned by the get_lovs() function}
 }

@@ -4,8 +4,9 @@
 \alias{get_metadata_all}
 \title{get_metadata_all}
 \usage{
-get_metadata_all(nids, credentials = list(cookie = dkanr::get_cookie(), token
-  = dkanr::get_token()))
+get_metadata_all(nids = ddhconnect::get_datasets_list("all"),
+  credentials = list(cookie = dkanr::get_cookie(), token =
+  dkanr::get_token()))
 }
 \arguments{
 \item{nids}{list: list of nids}
@@ -16,5 +17,5 @@ get_metadata_all(nids, credentials = list(cookie = dkanr::get_cookie(), token
 list
 }
 \description{
-Gather all the metadata corresponding to every nid passed
+Gather all the metadata corresponding to every nid passed, used for count_machine_names
 }

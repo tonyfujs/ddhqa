@@ -4,18 +4,8 @@ extract_file_path <- function(resource) {
                      resource$field_link_remote_file$und[[1]]$url,
                      resource$field_upload$und[[1]]$uri)
 
-  # find the file path, should only be one per resource
-  # need to add a check to make sure this is true
-
-  # find a better way to extract
-  loc_file <- loc_potential %>%
-    unlist() %>%
-    unname()
-
-  if (is.null(loc_file)) {
-    loc_file <- NA
-  }
-
+  loc_file <- unname(unlist(loc_potential))
+  if (is.null(loc_file)) {loc_file <- NA}
   return(loc_file)
 }
 
@@ -39,3 +29,26 @@ verify_valid_ext <- function(file_ext) {
   }
   return(ext)
 }
+
+# TODO really need to rename this
+# TODO improve performance, extremely slow
+format_metadata_df <- function(metadata) {
+  # flatten json
+  metadata_vals <- unlist(metadata)
+  # convert all empty string to missing vals
+  metadata_vals[metadata_vals == ""] <- NA
+  # extract machine names, remove nested information
+  metadata_names <- trim_machine_names(metadata_vals)
+  metadata_df <- data.frame(metadata_names, metadata_vals)
+  return(metadata_df)
+}
+
+# TODO extract machine names, remove nested information after using unlist
+# trim_machine_names <- function (metadata) {
+#   machine_names <- names(metadata) %>%
+#                   # as.character %>%
+#                    strsplit(".", fixed = TRUE) %>%
+#                    purrr::map_chr(c(1))
+#   machine_names <- as.character(machine_names)
+#   return(machine_names)
+# }

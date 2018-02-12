@@ -8,34 +8,18 @@
 #' @export
 #'
 
+check_resource_links <- function(metadata_resource) {
+  # TODO need to include? # set_config(config(ssl_verifypeer = 0L, timeout_ms = 2000))
+  url_results <- resource %>%
+                 extract_file_path %>%
+                 inspect_url
 
-check_resource_links <- function(metadata_resources) {
-
-  # switch to unlist version instead?
-  # see r inferno, this approach has better performance?
-  path <- vector("character", length = length(metadata_resources))
-  http_code <- vector("character", length = length(metadata_resources))
-
-  # set_config(config(ssl_verifypeer = 0L, timeout_ms = 2000))
-
-  for (i in 1:length(metadata_resources)) {
-    resource <- metadata_resources[[i]]
-
-    url_results <- resource %>%
-                     extract_file_path %>%
-                     inspect_url
-
-    path[i] <- url_results[1]
-    http_code[i] <- url_results[2]
-  }
-  http_df <- data.frame(resource_nid = names(metadata_resources),
-                        path,
-                        http_code)
-  return(http_df)
+  return(url_results)
 }
 
 
 inspect_url <- function(path) {
+
   resp <- tryCatch({
     httr::GET(path)
   }, error = function(e) {

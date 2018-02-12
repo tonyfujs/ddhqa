@@ -4,7 +4,7 @@
 \alias{check_resource_links}
 \title{check_resource_links}
 \usage{
-check_resource_links(metadata_resources)
+check_resource_links(metadata_resource)
 }
 \arguments{
 \item{metadata_resources}{list: object returned by get_metadata_resources or get_metadata_all}

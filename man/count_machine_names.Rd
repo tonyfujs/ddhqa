@@ -4,7 +4,8 @@
 \alias{count_machine_names}
 \title{count_machine_names}
 \usage{
-count_machine_names(all_data_fields)
+count_machine_names(all_metadata, credentials = list(cookie =
+  dkanr::get_cookie(), token = dkanr::get_token()))
 }
 \arguments{
 \item{all_metadata}{list: object returned by get_all_metadata}

@@ -12,11 +12,12 @@
 # need to optimize performance, initialize list/vector if possible, start with an empty list?
 # need to test on resources, currently pulls only from datasets
 
-count_machine_names <- function(all_data_fields){
-
+count_machine_names <- function(all_metadata,
+                                credentials = list(cookie = dkanr::get_cookie(),
+                                                   token = dkanr::get_token())){
     empty_fields <- c()
     used_fields <- c()
-    for (metadata in all_data_fields){
+    for (metadata in all_metadata){
       print(metadata$nid)
 
       # convert json metadata to dataframe

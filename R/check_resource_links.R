@@ -32,5 +32,5 @@ inspect_url <- function(path) {
     code <- httr::status_code(resp)
   }
 
-  return(c(path, code))
+  return(c(code, path))
 }

@@ -4,7 +4,7 @@
 \alias{check_file_ext}
 \title{check_file_ext}
 \usage{
-check_file_ext(metadata_resource, lookup = lookup_ext_to_form)
+check_file_ext(metadata_resource, lovs = ddhconnect::get_lovs())
 }
 \arguments{
 \item{metadata_resource}{dataframe: object returned by assemble_file_ext}

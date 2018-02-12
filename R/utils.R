@@ -1,8 +1,8 @@
 extract_file_path <- function(resource) {
   # keeping field_link_api because some of those are file extensions
-  loc_potential <- c(resource$field_link_api$und[[1]]$url,
-                     resource$field_link_remote_file$und[[1]]$url,
-                     resource$field_upload$und[[1]]$uri)
+  loc_potential <- c(resource$field_link_api$und$url,
+                     resource$field_link_remote_file$und$url,
+                     resource$field_upload$und$uri)
 
   loc_file <- unname(unlist(loc_potential))
   if (is.null(loc_file)) {loc_file <- NA}
@@ -22,8 +22,10 @@ return_file_ext <- function(file_path) {
 
 # remove na and keep valid file extensions
 verify_valid_ext <- function(file_ext) {
-  if (file_ext %in% valid_file_ext$file_ext || is.na(file_ext)) {
+  if (file_ext %in% valid_file_ext$file_ext) {
     ext <- file_ext
+  } else if (is_blank(file_ext)) {
+    ext <- NA
   } else {
     ext <- ""
   }
@@ -52,3 +54,7 @@ format_metadata_df <- function(metadata) {
 #   machine_names <- as.character(machine_names)
 #   return(machine_names)
 # }
+
+is_blank <- function(input){
+  return(gtools::invalid(input) || all(input == ""))
+}

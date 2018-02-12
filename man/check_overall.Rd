@@ -4,9 +4,8 @@
 \alias{check_overall}
 \title{check_overall}
 \usage{
-check_overall(nid_dataset, recom_fields = TRUE, file_ext = TRUE,
-  file_links = TRUE, credentials = list(cookie = dkanr::get_cookie(), token
-  = dkanr::get_token()))
+check_overall(nid_dataset, resources_check = TRUE, credentials = list(cookie
+  = dkanr::get_cookie(), token = dkanr::get_token()))
 }
 \arguments{
 \item{metadata_datasets}{list: object returned by get_metadata_datasets}

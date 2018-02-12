@@ -15,7 +15,8 @@ Imports:
     dkanr,
     ddhconnect,
     dplyr,
-    tidyr
+    tidyr,
+    gtools
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true

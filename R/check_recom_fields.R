@@ -11,6 +11,7 @@
 
 check_recom_fields <- function (dataset) {
   # TODO maybe include error handler if not dataset tryCatch({})
+  # TODO not sure if the value is actually populated, currently only checking if the machine name exists
   lovs <- ddhconnect::get_lovs()
   dataset_df <- dataset %>%
                 format_metadata_df()

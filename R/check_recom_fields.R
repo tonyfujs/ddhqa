@@ -3,6 +3,7 @@
 #' Check which recommended fields are missing
 #'
 #' @param metadata list: object returned by get_metadata()
+
 #' @param lovs dataframe: object returned by the get_lovs() function
 #'
 #' @return vector

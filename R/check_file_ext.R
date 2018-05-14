@@ -12,34 +12,21 @@
 check_file_ext <- function(metadata_resource,
                            lovs = ddhconnect::get_lovs()){
 
-  field_format <- extract_field_format(resource, lovs)
-  file_ext <- resource %>%
-                extract_file_path %>%
-                return_file_ext %>%
-                verify_valid_ext
-  # TODO: might need a separate check to verified the type is allowed? build into verify_valid_ext
+  field_format <- get_field_format(metadata_resource, lovs)
 
-  if (identical(field_format, file_ext)) {
-    out <- "CONGRATSSSSSSSSS~~~(^-^*~~~)"
+  url <- dkanr::get_resource_url(metadata_resource)
+  file_ext <- get_file_ext(url)
+
+  # TODO confirm logic
+  if (is_blank(field_format) & !is_blank(file_ext)) {
+    out <- c("FAIL", glue("The field_format is missing, value should take a {file_ext} extenstion"))
+  } else if (!is_blank(field_format) & is_blank(file_ext)) {
+    out <- c("FAIL", glue("The resource path is expected to take {field_format}"))
+  } else if (file_ext %in% field_format | file_ext == field_format) {
+    out <- c("PASS", glue("The field_format ({field_format}) matches the resource's file ext ({file_ext})"))
   } else {
-    out <- "TRY AGAIN"
+    out <- c("PASS", "Both are blank so it should be ok? ")
   }
 
   return(out)
-}
-
-extract_field_format <- function(metadata_resource,
-                                 lovs = ddhconnect::get_lovs()) {
-  field_format_tid <- unlist(resource$field_format)
-
-  # grab list value name based on tid
-  if (!is_blank(field_format_tid)) {
-    expected_val <- lovs %>%
-                    subset(tid == field_format_tid) %>%
-                    pull(list_value_name)
-  } else {
-    expected_val <- NA
-  }
-
-  return(expected_val)
 }

@@ -4,12 +4,12 @@
 \alias{check_recom_fields}
 \title{check_recom_fields}
 \usage{
-check_recom_fields(dataset)
+check_recom_fields(dataset, lovs = ddhconnect::get_lovs())
 }
 \arguments{
-\item{datasets}{list: object returned by get_metadata()}
-
 \item{lovs}{dataframe: object returned by the get_lovs() function}
+
+\item{datasets}{list: object returned by get_metadata()}
 }
 \value{
 vector

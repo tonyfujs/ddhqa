@@ -16,7 +16,9 @@ Imports:
     ddhconnect,
     dplyr,
     tidyr,
-    gtools
+    gtools,
+    rlang,
+    glue
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true

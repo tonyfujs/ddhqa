@@ -4,11 +4,12 @@
 \alias{check_overall}
 \title{check_overall}
 \usage{
-check_overall(nid_dataset, resources_check = TRUE, credentials = list(cookie
-  = dkanr::get_cookie(), token = dkanr::get_token()))
+check_overall(nid_data, checks = c("recommended", "exts", "links",
+  "unpublished"), credentials = list(cookie = dkanr::get_cookie(), token =
+  dkanr::get_token()))
 }
 \arguments{
-\item{metadata_datasets}{list: object returned by get_metadata_datasets}
+\item{nid_data}{string: node id for a dataset}
 
 \item{lovs}{dataframe: object returned by the get_lovs() function}
 }

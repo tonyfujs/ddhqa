@@ -1,0 +1,12 @@
+name: weekly_report_pilot
+title: weekly_report_pilot
+username: kdhanalakshmiram
+account: kdhanalakshmiram
+server: w0lxpjekins05.worldbank.org
+hostUrl: http://w0lxpjekins05.worldbank.org:3939/__api__
+appId: 28
+bundleId: 136
+url: http://w0lxpjekins05.worldbank.org:3939/content/28/
+when: 1526075340.70199
+asMultiple: FALSE
+asStatic: FALSE

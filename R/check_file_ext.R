@@ -9,28 +9,35 @@
 #' @export
 #'
 
-check_file_ext <- function(metadata_resource,
-                           lovs = ddhconnect::get_lovs()){
+check_file_ext <- function(resource_nid){
 
-  field_format <- extract_field_format(resource, lovs)
-  file_ext <- resource %>%
-                extract_file_path %>%
-                return_file_ext %>%
-                verify_valid_ext
-  # TODO: might need a separate check to verified the type is allowed? build into verify_valid_ext
+  metadata_resource <- get_metadata(resource_nid)
+  lovs <- ddhconnect::get_lovs()
+  field_format <- extract_field_format(metadata_resource, lovs)
 
-  if (identical(field_format, file_ext)) {
-    out <- "CONGRATSSSSSSSSS~~~(^-^*~~~)"
-  } else {
-    out <- "TRY AGAIN"
+  file_ext <- tryCatch(
+    {
+      metadata_resource %>%
+      extract_file_path %>%
+      return_file_ext %>%
+      verify_valid_ext
+    },
+    error = function(e){
+      return(NA)
+    }
+  )
+
+  if ((is.na(file_ext) & is.na(field_format)) | identical(tolower(field_format), tolower(file_ext))){
+    return(c(field_format = field_format, file_ext = file_ext, match = TRUE))
   }
-
-  return(out)
+  else{
+    return(c(field_format = field_format, file_ext = file_ext, match = FALSE))
+  }
 }
 
 extract_field_format <- function(metadata_resource,
                                  lovs = ddhconnect::get_lovs()) {
-  field_format_tid <- unlist(resource$field_format)
+  field_format_tid <- unlist(metadata_resource$field_format)
 
   # grab list value name based on tid
   if (!is_blank(field_format_tid)) {

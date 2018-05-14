@@ -2,7 +2,7 @@ extract_file_path <- function(resource) {
   # keeping field_link_api because some of those are file extensions
   loc_potential <- c(resource$field_link_api$und$url,
                      resource$field_link_remote_file$und$url,
-                     resource$field_upload$und$uri)
+                     resource$field_upload$und[[1]]$uri)
 
   loc_file <- unname(unlist(loc_potential))
   if (is.null(loc_file)) {loc_file <- NA}

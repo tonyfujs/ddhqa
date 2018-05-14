@@ -1,0 +1,35 @@
+---
+title: "DDH Quality Checks"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Check File Extensions
+
+The file extension of resources in DDH often influences whether the user clicks on the resource and downloads it. In this case, it is important to have the file extensions assigned correctly. It is possible for the data contributor to assign the wrong file extension either due to a misunderstanding of the field or by mistake. For example a user may upload a zip file containing csv data and assign the file extension as csv in the metadata. The following quality check reports all the resources that have a wrong file extension.  
+
+```{r}
+library(dkanr)
+library(ddhconnect)
+# library(ddhqa)
+library(dplyr)
+
+dkanr_setup(
+  url = 'https://datacatalog.worldbank.org',
+  username = Sys.getenv("username"),
+  password = Sys.getenv("password")
+)
+
+ts_datasets <- get_datasets_list("Time Series")
+ts_datasets_nids <- ts_datasets$nid
+resource_nids <- purrr::map(ts_datasets_nids, function(x) get_resource_nid(x))
+resource_nids <- unlist(resource_nids)
+# file_ext_match <- purrr::map(resource_nids, function(resource_nid) check_file_ext(resource_nid))
+# df_file_ext_match <- do.call(rbind.data.frame, file_ext_match)
+# colnames(df_file_ext_match) <- c("resource_field", "file_ext", "is_match")
+# df_file_ext_match$resource_nid <- resource_nids
+# df_file_ext_match %>% filter(is_match == FALSE)
+```

@@ -1,6 +1,6 @@
 #' check_missing
 #'
-#' Get missing resources for all datasets
+#' Check is the dataset has no resources
 #'
 #' @param metadata_dataset list: output of get_metadata() for a dataset
 #'

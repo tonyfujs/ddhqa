@@ -1,15 +1,12 @@
-context("File extensions for resources links")
+context("Tests supporting check for resource file extensions")
 
 # Define constant values
 
-# Test get_field_format
+# Test get_field_format()
 test_that("Maps existing tids to allowed file exts", {
   expect_equal(get_field_format(list("field_format" = "14")), "csv")
   expect_equal(get_field_format(list("field_format" = "1194")), c("xls", "xlsx", "ods"))
   expect_equal(get_field_format(list("field_format" = "659")), "zip")
-})
-
-test_that("Prints error if tids do not exist", {
 })
 
 # Test get_file_ext()
@@ -20,5 +17,9 @@ test_that("Trims URL paths to file extensions", {
 
 test_that("Matches with upper/lower cases", {
   expect_equal(get_file_ext("abc.XLSX"), "xlsx")
+  expect_equal(get_file_ext("abc.CSV"), "csv")
 })
 
+test_that("Confirm logic", {
+  expect_equal()
+})

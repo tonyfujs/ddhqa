@@ -1,6 +1,6 @@
 #' check_unpublished
 #'
-#' Get unpublished resources of one or all of the data types
+#' Check if resource is unpublished
 #'
 #' @param metadata_resource list: output of get_metadata() for a resource
 #'

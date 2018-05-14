@@ -1,6 +1,6 @@
 #' check_overall
 #'
-#' Overall automated quality checks for the Data Catalog
+#' Overall automated quality check for each dataset
 #'
 #' @param nid_data string: node id for a dataset
 #' @param lovs dataframe: object returned by the get_lovs() function
@@ -9,15 +9,17 @@
 #' @export
 #'
 
-# TODO check programming with dplyr
-# TODO add different checks as parameters
-# TODO think about a good way to coallate results, currently using rbind on line 65
-# TODO initialize output dataframe based on number of checks?
-# TODO add the nids to the results
+#TODO: check programming with dplyr
+#TODO: add different checks as parameters
+#TODO: think about a good way to coallate results, currently using rbind on line 65
+#TODO: initialize output dataframe based on number of checks?
+#TODO: add the nids to the results
+
 check_overall <- function(nid_data,
                           checks = c("recommended", "exts", "links", "unpublished"),
                           credentials = list(cookie = dkanr::get_cookie(),
                                              token = dkanr::get_token())) {
+
   # subset the required number of checks based on input
   fun_todo <- all_checks %>%
     subset(parameter %in% checks) %>%
@@ -35,8 +37,8 @@ check_overall <- function(nid_data,
     mutate(result = lapply(funcs, function(f) f(dataset)),
            nid = nid_data)
 
-  nid_resources <- unname(unlist(dataset$field_resources))
   # quality checks for resources
+  nid_resources <- unname(unlist(dataset$field_resources))
   resource_check <- fun_todo %>% subset(type == "resource")
   if (nrow(resource_check) > 0) {
     for (i in 1:length(nid_resources)) {
@@ -53,7 +55,6 @@ check_overall <- function(nid_data,
         mutate(result = lapply(funcs, function(f) f(resource)),
                nid = nid_res) %>%
 
-
       out <- rbind(out, out_resource)
     }
   }
@@ -61,5 +62,3 @@ check_overall <- function(nid_data,
   clean_out <- out %>% select(-funcs)
   return(out)
 }
-
-

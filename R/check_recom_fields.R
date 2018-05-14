@@ -2,18 +2,20 @@
 #'
 #' Check which recommended fields are missing
 #'
-#' @param datasets list: object returned by get_metadata()
+#' @param metadata list: object returned by get_metadata()
 #' @param lovs dataframe: object returned by the get_lovs() function
 #'
 #' @return vector
 #' @export
 #'
 
-check_recom_fields <- function (dataset,
-                                lovs = ddhconnect::get_lovs()) {
-  populated <- dataset[lapply(dataset, length) > 0]
+# TODO check programming with dplyr
+check_recom_fields <- function(metadata,
+                               lovs = ddhconnect::get_lovs()) {
 
-  tid_type <- unlist(dataset$field_wbddh_data_type, use.names = FALSE)
+  populated <- metadata[lapply(metadata, length) > 0]
+
+  tid_type <- unlist(metadata$field_wbddh_data_type, use.names = FALSE)
   ui_name <- subset(lovs, tid == tid_type, select = list_value_name)
 
   missing_rec_fields <- subset(recommended_fields,

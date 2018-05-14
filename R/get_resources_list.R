@@ -1,6 +1,5 @@
 #' get_resources_list()
 #'
-#' @param datasets_metadata character: output of get_metadata_datasets
 #' @param est_count character: Approximate number of resources
 #' @param credentials list: API authentication credentials
 #'
@@ -10,10 +9,14 @@
 #'
 
 # TODO can use this if doing count for machine names?
-get_resources_list <- function(datasets_metadata,
-                               rand_count = 100000,
+# TODO needs to be updated/fixed
+get_resources_list <- function(rand_count = 100000,
+                               root_url = dkanr::get_url(),
                                credentials = list(cookie = dkanr::get_cookie(),
                                                   token = dkanr::get_token())){
+
+  ddhconnect::get_datasets_list()
+
   nid_resources <- vector("list", rand_count)
   count <- 1
 

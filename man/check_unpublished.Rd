@@ -7,7 +7,7 @@
 check_unpublished(metadata_resource)
 }
 \arguments{
-\item{datatype}{character: datatype of datasets for which to return the resource nids}
+\item{metadata_resource}{list: output of get_metadata() for a resource}
 }
 \value{
 character vector

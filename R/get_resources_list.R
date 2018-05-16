@@ -10,14 +10,15 @@
 
 # TODO can use this if doing count for machine names?
 # TODO needs to be updated/fixed
-get_resources_list <- function(rand_count = 100000,
+
+get_resources_list <- function(est_count = 100000,
                                root_url = dkanr::get_url(),
                                credentials = list(cookie = dkanr::get_cookie(),
                                                   token = dkanr::get_token())){
 
   ddhconnect::get_datasets_list()
 
-  nid_resources <- vector("list", rand_count)
+  nid_resources <- vector("list", est_count)
   count <- 1
 
   for (dataset in datasets_metadata){

@@ -13,5 +13,5 @@ check_unpublished(metadata_resource)
 character vector
 }
 \description{
-Get unpublished resources of one or all of the data types
+Check if resource is unpublished
 }

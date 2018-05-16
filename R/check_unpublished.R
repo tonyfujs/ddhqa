@@ -10,14 +10,14 @@
 
 check_unpublished <- function(metadata_resource) {
 
-  dataset_nid <- unname(unlist(metadata_resource$field_dataset_ref))
+  dataset_nid <- unlist(metadata_resource$field_dataset_ref, use.names = FALSE)
   resource_nid <- metadata_resource$nid
-  resource_status <- unname(unlist(metadata_resource$status))
+  resource_status <- unlist(metadata_resource$status, use.names = FALSE)
 
   if (resource_status == 1) {
-    out <- c(dataset_nid, resource_nid, "PASS", "published")
+    out <- c("resource", resource_nid, "check_unpublished", "PASS", "published")
   } else {
-    out <- c(dataset_nid, resource_nid, "FAIL", "unpublished")
+    out <- c("resource", resource_nid, "check_unpublished", "FAIL", glue("unpublished resource for dataset {dataset_nid}"))
   }
 
   return(out)

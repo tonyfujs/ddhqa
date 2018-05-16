@@ -1,6 +1,6 @@
 #' check_missing
 #'
-#' Check is the dataset has no resources
+#' Check if the dataset is missing resources
 #'
 #' @param metadata_dataset list: output of get_metadata() for a dataset
 #'
@@ -10,13 +10,13 @@
 
 check_missing <- function(metadata_dataset) {
 
-  dataset_nid <- unname(unlist(metadata_dataset$nid))
-  resource_nid <- get_resources_list(metadata_dataset)
+  dataset_nid <- unlist(metadata_dataset$nid, use.names = FALSE)
+  resource_nids <- unlist(metadata_dataset$field_resources, use.names = FALSE)
 
-  if (length(resource_nid) != 0) {
-    out <- c(dataset_nid, "PASS", "has resources")
+  if (length(resource_nids) > 0) {
+    out <- c("dataset", dataset_nid, "check_missing", "PASS", "has resources")
   } else {
-    out <- c(dataset_nid, "FAIL", "missing resources")
+    out <- c("dataset", dataset_nid, "check_missing", "FAIL", "needs resources")
   }
 
   return(out)

@@ -7,7 +7,7 @@
 check_file_ext(metadata_resource, lovs = ddhconnect::get_lovs())
 }
 \arguments{
-\item{metadata_resource}{dataframe: object returned by assemble_file_ext}
+\item{metadata_resource}{named vector: object returned by get_metadata() on a resource}
 
 \item{lovs}{dataframe: object returned by the get_lovs() function}
 }
@@ -15,5 +15,5 @@ check_file_ext(metadata_resource, lovs = ddhconnect::get_lovs())
 dataframe
 }
 \description{
-Check if the resource file extension matches the field_form value
+Check if the resource file extension matches the expected field_form value
 }

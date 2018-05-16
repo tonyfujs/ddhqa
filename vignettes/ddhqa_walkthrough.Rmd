@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 This package automates different quality checks for the World Bank's Data Catalog
 
 ## Set up
-```{r setup, include = FALSE}
+```{r eval = FALSE}
 package <- 'tonyfujs/ddhqa'
 github_token <- "YOUR TOKEN"
 httr::set_config(httr::config(ssl_verifypeer = 0L))
@@ -27,7 +27,7 @@ devtools::install_github(package, auth_token = github_token)
 ```
 
 run credentials
-```{r setup, include = FALSE}
+```{r eval = FALSE}
 url <- 'https://datacatalog.worldbank.org/'
 username <- 'USERNAME'
 password <- 'PASSWORD'
@@ -44,7 +44,7 @@ credentials <- dkanr::dkanr_setup(url, username, password)
 The first step to running the quality assurance functions is to gather all the metadata for the nodes you are interested in.
 
 If you would like to look at a larger portion of the datasets, use this approach. Be sure if filter by `data_type` if you are interested.
-```{r setup, include = FALSE}
+```{r eval = FALSE}
 # datasets
 datasets_nids <- get_datasets_list(data_type = "all")
 datasets <- get_metadata_datasets(datasets_nids)
@@ -60,7 +60,7 @@ You may also pass your own subset for nids into the functions. You can do this b
 Call `count_machine_names()` to have a better understanding to see which metadata fields are being used.
 These results are will display the frequency of use as well as frequency of the field being empty (null or empty list).
 
-```{r setup, include = FALSE}
+```{r eval = FALSE}
 # datasets
 count_machine_names(datasets)
 
@@ -76,12 +76,12 @@ There are multiple checks to compare resource file extensions:
   * the incorrect field is being used between the three options (remote file vs. field link api)
 
 First, grab the resources' metadata. Then view the `field_form` and file extension for each of those nids.
-```{r setup, include = FALSE}
+```{r eval = FALSE}
 assemble_file_ext(resources)
 ```
 
 You can then select which issues you would like to explore.
-```{r setup, include = FALSE}
+```{r eval = FALSE}
 # field_format and file extension do not match
 check_file_ext(resources)
 ```
@@ -89,7 +89,7 @@ check_file_ext(resources)
 ### [ 4 ] external links
 * check if external links are valid
 * avoid 404 errors
-```{r setup, include = FALSE}
+```{r eval = FALSE}
 check_resource_links(resources)
 ```
 
@@ -97,6 +97,6 @@ check_resource_links(resources)
 While datasets have mandatory fields, it is important to 
 
 
-```{r setup, include = FALSE}
+```{r eval = FALSE}
 check_recom_fields(resources)
 ```

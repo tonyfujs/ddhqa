@@ -4,12 +4,12 @@
 \alias{check_overall}
 \title{check_overall}
 \usage{
-check_overall(nid_data, checks = c("recommended", "exts", "links",
+check_overall(nid_dataset, checks = c("recommended", "exts", "links",
   "unpublished"), credentials = list(cookie = dkanr::get_cookie(), token =
   dkanr::get_token()))
 }
 \arguments{
-\item{nid_data}{string: node id for a dataset}
+\item{nid_dataset}{string: node id for a dataset}
 
 \item{lovs}{dataframe: object returned by the get_lovs() function}
 }
@@ -17,5 +17,5 @@ check_overall(nid_data, checks = c("recommended", "exts", "links",
 dataframe
 }
 \description{
-Overall automated quality checks for the Data Catalog
+Overall automated quality check for each dataset
 }

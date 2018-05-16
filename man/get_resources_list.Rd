@@ -4,16 +4,14 @@
 \alias{get_resources_list}
 \title{get_resources_list()}
 \usage{
-get_resources_list(datasets_metadata, rand_count = 1e+05,
+get_resources_list(est_count = 1e+05, root_url = dkanr::get_url(),
   credentials = list(cookie = dkanr::get_cookie(), token =
   dkanr::get_token()))
 }
 \arguments{
-\item{datasets_metadata}{character: output of get_metadata_datasets}
+\item{est_count}{character: Approximate number of resources}
 
 \item{credentials}{list: API authentication credentials}
-
-\item{est_count}{character: Approximate number of resources}
 }
 \value{
 numeric vector

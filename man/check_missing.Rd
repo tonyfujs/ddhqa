@@ -13,5 +13,5 @@ check_missing(metadata_dataset)
 character vector
 }
 \description{
-Get missing resources for all datasets
+Check if the dataset is missing resources
 }

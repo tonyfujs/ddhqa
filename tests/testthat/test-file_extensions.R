@@ -1,6 +1,12 @@
 context("Tests supporting check for resource file extensions")
 
 # Define constant values
+test_metadata <- list(
+  "field_format" = "14",
+  "field_upload" = "hi.org/bye.csv",
+  "field_link_api" = "hi.org/bye.csv",
+  "field_link_remote_file" = "hi.org/bye.csv"
+)
 
 # Test get_field_format()
 test_that("Maps existing tids to allowed file exts", {
@@ -20,6 +26,7 @@ test_that("Matches with upper/lower cases", {
   expect_equal(get_file_ext("abc.CSV"), "csv")
 })
 
-test_that("Confirm logic", {
-  expect_equal()
-})
+# Test logic in check_file_ext()
+# test_that("", {
+#   expect_equal()
+# })

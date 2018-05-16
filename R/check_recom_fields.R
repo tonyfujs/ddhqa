@@ -2,35 +2,36 @@
 #'
 #' Check which recommended fields are missing
 #'
-#' @param metadata list: object returned by get_metadata()
-
+#' @param metadata_dataset list: object returned by get_metadata()
 #' @param lovs dataframe: object returned by the get_lovs() function
 #'
 #' @return vector
 #' @export
 #'
 
-# TODO check programming with dplyr
-check_recom_fields <- function(metadata,
+#TODO: check recommended_fields table
+# [ ] don't really need the recommended column, but double check
+# [ ] find the collections machine name or remove it from the table
+
+check_recom_fields <- function(metadata_dataset,
                                lovs = ddhconnect::get_lovs()) {
+  dataset_nid <- unlist(metadata_dataset$nid, use.names = FALSE)
+  tid_type <- unlist(metadata_dataset$field_wbddh_data_type, use.names = FALSE)
+  ui_name <- unlist(subset(lovs, tid == tid_type, select = list_value_name), use.names = FALSE)
 
-  populated <- metadata[lapply(metadata, length) > 0]
 
-  tid_type <- unlist(metadata$field_wbddh_data_type, use.names = FALSE)
-  ui_name <- subset(lovs, tid == tid_type, select = list_value_name)
+  rec_fields <- na.omit(subset(recommended_fields, data_type == ui_name, select = machine_name))
+  clean_rec_fields <- unlist(rec_fields, use.names = FALSE)
 
-  missing_rec_fields <- subset(recommended_fields,
-                               data_type == unlist(ui_name, use.names = FALSE)) %>%
-                        na.omit(.) %>%
-                        filter(!(machine_name %in% names(populated))) %>%
-                        pull(machine_name) %>%
-                        unique(.)
+  populated_fields <- metadata[lapply(metadata_dataset, length) > 0]
+  missing_rec_fields <- setdiff(clean_rec_fields, names(populated_fields))
 
   if (length(missing_rec_fields) > 0) {
     str <- paste0(missing_rec_fields, collapse = ", ")
-    out <- c("FAIL", glue("Missing the following: {str}"))
+    out <- c("dataset", dataset_nid, "check_recom_fields", "FAIL", glue("Missing the following: {str}"))
   } else {
-    out <- c("PASS", "No missing recommended")
+    out <- c("dataset", dataset_nid, "check_recom_fields", "PASS", "No missing recommended fields")
   }
+
   return(out)
 }

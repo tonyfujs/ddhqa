@@ -44,13 +44,13 @@ check_overall <- function(nid_dataset,
   data_checks <- subset(all_checks, node_type == "dataset")
   for (data_check in data_checks$func_names) {
     result <- get(data_check)(dataset)
-    out <- rbind(out, result, stringsAsFactors=FALSE)
+    out <- rbind(out, result, stringsAsFactors = FALSE)
   }
 
   # quality checks for resources
   nid_resources <- unlist(dataset$field_resources, use.names = FALSE)
   res_checks <- subset(all_checks, node_type == "resource")
-  if (nrow(resource_checks) > 0) {
+  if (nrow(res_checks) > 0) {
     for (i in 1:length(nid_resources)) {
       nid_res <- nid_resources[[i]]
 
@@ -63,7 +63,7 @@ check_overall <- function(nid_dataset,
 
       for (res_check in res_checks$func_names) {
         result <- get(res_check)(resource)
-        out <- rbind(out, result, stringsAsFactors=FALSE)
+        out <- rbind(out, result, stringsAsFactors =FALSE)
       }
     }
   }

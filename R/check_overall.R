@@ -68,6 +68,6 @@ check_overall <- function(nid_dataset,
     }
   }
 
-  names(out) <- c("node_type", "node_id", "check_name", "message", "status")
+  names(out) <- c("node_type", "node_id", "check_name", "status", "message")
   return(out)
 }

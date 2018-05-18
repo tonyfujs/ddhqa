@@ -3,27 +3,31 @@
 #' Overall automated quality check for each dataset
 #'
 #' @param nid_dataset string: node id for a dataset
+#' @param checks:
 #' @param lovs dataframe: object returned by the get_lovs() function
 #'
 #' @return dataframe
 #' @export
 #'
-
-#TODO: check programming with dplyr
+# c("check_file_ext", "check_missing", "check_recom_fields", "check_resource_link", "check_unpublished" )
+#TODO: fix this
 #TODO: add different checks as parameters using function names maybe?
-#TODO: think about a good way to coallate results, currently using rbind on line 65
-#TODO: initialize output dataframe based on number of checks?
+#TODO: think about a good way to coallate results, currently using rbind around line 65
 #TODO: add the nids to the results
+#TODO: break function into smaller pieces
 
 check_overall <- function(nid_dataset,
-                          checks = c("recommended", "exts", "links", "unpublished"),
+                          checks = "all",
                           credentials = list(cookie = dkanr::get_cookie(),
                                              token = dkanr::get_token())) {
 
   # subset the required number of checks based on input
-  fun_todo <- all_checks %>%
-    subset(parameter %in% checks) %>%
-    mutate(funcs = lapply(func_names, get))
+  if (checks == "all") {
+    fun_todo <- mutate(all_checks, funcs = lapply(func_names, get))
+  } else {
+    less_checks <- subset(all_checks, parameter %in% checks)
+    fun_todo <- mutate(less_checks, funcs = lapply(func_names, get))
+  }
 
   # get dataset metadata
   tryCatch({
@@ -59,6 +63,6 @@ check_overall <- function(nid_dataset,
     }
   }
 
-  clean_out <- out %>% select(-funcs)
+  clean_out <- subset(out, select = -funcs)
   return(out)
 }

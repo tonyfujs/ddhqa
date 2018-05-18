@@ -14,9 +14,9 @@ check_missing <- function(metadata_dataset) {
   resource_nids <- unlist(metadata_dataset$field_resources, use.names = FALSE)
 
   if (length(resource_nids) > 0) {
-    out <- c("dataset", dataset_nid, "check_missing", "PASS", "has resources")
+    out <- list("dataset", dataset_nid, "check_missing", "PASS", "has resources")
   } else {
-    out <- c("dataset", dataset_nid, "check_missing", "FAIL", "needs resources")
+    out <- list("dataset", dataset_nid, "check_missing", "FAIL", "needs resources")
   }
 
   return(out)

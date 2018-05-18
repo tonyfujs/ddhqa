@@ -3,30 +3,35 @@
 #' Overall automated quality check for each dataset
 #'
 #' @param nid_dataset string: node id for a dataset
-#' @param checks:
+#' @param checks: string: the check you want to perform
 #' @param lovs dataframe: object returned by the get_lovs() function
 #'
 #' @return dataframe
 #' @export
 #'
+
+#TODO: better handle the checks parameter
 # c("check_file_ext", "check_missing", "check_recom_fields", "check_resource_link", "check_unpublished" )
-#TODO: fix this
-#TODO: add different checks as parameters using function names maybe?
-#TODO: think about a good way to coallate results, currently using rbind around line 65
-#TODO: add the nids to the results
-#TODO: break function into smaller pieces
+#TODO: break function into smaller pieces and switch to lapply(funcs, function(f) f(dataset))
+#TODO: review R inferno chapter on growing objects, rbind definitely not the best idea
 
 check_overall <- function(nid_dataset,
                           checks = "all",
                           credentials = list(cookie = dkanr::get_cookie(),
                                              token = dkanr::get_token())) {
 
-  # subset the required number of checks based on input
-  if (checks == "all") {
-    fun_todo <- mutate(all_checks, funcs = lapply(func_names, get))
-  } else {
-    less_checks <- subset(all_checks, parameter %in% checks)
-    fun_todo <- mutate(less_checks, funcs = lapply(func_names, get))
+  out <- data.frame(
+    node_type = character(),
+    node_id = character(),
+    check_name = character(),
+    message = character(),
+    status = character(),
+    stringsAsFactors = FALSE
+  )
+
+  #subset the required number of checks based on input
+  if (checks != "all") {
+    all_checks <- subset(all_checks, func_names %in% checks)
   }
 
   # get dataset metadata
@@ -36,15 +41,16 @@ check_overall <- function(nid_dataset,
     cat("ERROR :", node, conditionMessage(e), "\n")
   })
 
-  # quality checks for datasets
-  out <- fun_todo %>%
-    subset(type == "dataset") %>%
-    mutate(result = lapply(funcs, function(f) f(dataset)))
+  data_checks <- subset(all_checks, node_type == "dataset")
+  for (data_check in data_checks$func_names) {
+    result <- get(data_check)(dataset)
+    out <- rbind(out, result, stringsAsFactors=FALSE)
+  }
 
   # quality checks for resources
-  nid_resources <- ddhconnect::get_resource_nids(dataset)
-  resource_check <- fun_todo %>% subset(type == "resource")
-  if (nrow(resource_check) > 0) {
+  nid_resources <- unlist(dataset$field_resources, use.names = FALSE)
+  res_checks <- subset(all_checks, node_type == "resource")
+  if (nrow(resource_checks) > 0) {
     for (i in 1:length(nid_resources)) {
       nid_res <- nid_resources[[i]]
 
@@ -55,14 +61,13 @@ check_overall <- function(nid_dataset,
         cat("ERROR :", node, conditionMessage(e), "\n")
       })
 
-      out_resource <- fun_todo %>%
-        subset(type == "resource") %>%
-        mutate(result = lapply(funcs, function(f) f(resource)))
-
-      out <- rbind(out, out_resource)
+      for (res_check in res_checks$func_names) {
+        result <- get(res_check)(resource)
+        out <- rbind(out, result, stringsAsFactors=FALSE)
+      }
     }
   }
 
-  clean_out <- subset(out, select = -funcs)
+  names(out) <- c("node_type", "node_id", "check_name", "message", "status")
   return(out)
 }

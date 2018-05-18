@@ -23,14 +23,14 @@ check_recom_fields <- function(metadata_dataset,
   rec_fields <- na.omit(subset(recommended_fields, data_type == ui_name, select = machine_name))
   clean_rec_fields <- unlist(rec_fields, use.names = FALSE)
 
-  populated_fields <- metadata[lapply(metadata_dataset, length) > 0]
+  populated_fields <- metadata_dataset[lapply(metadata_dataset, length) > 0]
   missing_rec_fields <- setdiff(clean_rec_fields, names(populated_fields))
 
   if (length(missing_rec_fields) > 0) {
     str <- paste0(missing_rec_fields, collapse = ", ")
-    out <- c("dataset", dataset_nid, "check_recom_fields", "FAIL", glue("Missing the following: {str}"))
+    out <- list("dataset", dataset_nid, "check_recom_fields", "FAIL", glue("Missing the following: {str}"))
   } else {
-    out <- c("dataset", dataset_nid, "check_recom_fields", "PASS", "No missing recommended fields")
+    out <- list("dataset", dataset_nid, "check_recom_fields", "PASS", "No missing recommended fields")
   }
 
   return(out)

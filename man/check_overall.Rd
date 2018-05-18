@@ -4,12 +4,13 @@
 \alias{check_overall}
 \title{check_overall}
 \usage{
-check_overall(nid_dataset, checks = c("recommended", "exts", "links",
-  "unpublished"), credentials = list(cookie = dkanr::get_cookie(), token =
-  dkanr::get_token()))
+check_overall(nid_dataset, checks = "all", credentials = list(cookie =
+  dkanr::get_cookie(), token = dkanr::get_token()))
 }
 \arguments{
 \item{nid_dataset}{string: node id for a dataset}
+
+\item{checks:}{string: the check you want to perform}
 
 \item{lovs}{dataframe: object returned by the get_lovs() function}
 }

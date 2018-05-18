@@ -13,6 +13,7 @@ lookup_ext_to_form <- readr::read_csv("./data-raw/lookup_ext_to_form.csv")
 
 recommended_fields <- readr::read_csv("./data-raw/recommended_fields.csv")
 
+all_checks <- readr::read_csv("./data-raw/all_checks.csv")
 
 #_________________________________________
 # save
@@ -20,5 +21,6 @@ recommended_fields <- readr::read_csv("./data-raw/recommended_fields.csv")
 devtools::use_data(valid_file_ext,
                    lookup_ext_to_form,
                    recommended_fields,
+                   all_checks,
                    #internal = TRUE,
                    overwrite = TRUE)

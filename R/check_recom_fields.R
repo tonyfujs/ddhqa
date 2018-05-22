@@ -20,15 +20,16 @@ check_recom_fields <- function(metadata_dataset,
   ui_name <- unlist(subset(lovs, tid == tid_type, select = list_value_name), use.names = FALSE)
 
 
-  rec_fields <- na.omit(subset(recommended_fields, data_type == ui_name, select = machine_name))
-  clean_rec_fields <- unlist(rec_fields, use.names = FALSE)
+  rec_fields <- recommended_fields[recommended_fields$data_type == ui_name, ]
+  rec_fields <- rec_fields[!is.na(rec_fields$recommended), ]
+  clean_rec_fields <- rec_fields[["machine_name"]]
 
   populated_fields <- metadata_dataset[lapply(metadata_dataset, length) > 0]
   missing_rec_fields <- setdiff(clean_rec_fields, names(populated_fields))
 
   if (length(missing_rec_fields) > 0) {
     str <- paste0(missing_rec_fields, collapse = ", ")
-    out <- list("dataset", dataset_nid, "check_recom_fields", "FAIL", glue("Missing the following: {str}"))
+    out <- list("dataset", dataset_nid, "check_recom_fields", "FAIL", glue::glue("Missing the following: {str}"))
   } else {
     out <- list("dataset", dataset_nid, "check_recom_fields", "PASS", "No missing recommended fields")
   }

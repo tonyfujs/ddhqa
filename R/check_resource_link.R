@@ -28,9 +28,9 @@ check_resource_link <- function(metadata_resource) {
   }
 
   if (code == "200") {
-    out <- list("resource", resource_nid, "check_resource_links", "PASS", glue("{code}, you're good to go"))
+    out <- list("resource", resource_nid, "check_resource_links", "PASS", glue::glue("{code}, you're good to go"))
   } else {
-    out <- list("resource", resource_nid, "check_resource_links", "FAIL", glue("{code}, check the link"))
+    out <- list("resource", resource_nid, "check_resource_links", "FAIL", glue::glue("{code}, check the link"))
   }
 
   return(out)

@@ -17,7 +17,7 @@ check_unpublished <- function(metadata_resource) {
   if (resource_status == 1) {
     out <- list("resource", resource_nid, "check_unpublished", "PASS", "published")
   } else {
-    out <- list("resource", resource_nid, "check_unpublished", "FAIL", glue("unpublished resource for dataset {dataset_nid}"))
+    out <- list("resource", resource_nid, "check_unpublished", "FAIL", glue::glue("unpublished resource for dataset {dataset_nid}"))
   }
 
   return(out)

@@ -5,11 +5,11 @@ Acronym,field_wbddh_acronym,Microdata,1
 Acronym,field_wbddh_acronym,Other,1
 Are you the responsible TTL for this dataset?,field_wbddh_responsible,Time Series,1
 Are you the responsible TTL for this dataset?,field_wbddh_responsible,Geospatial,1
-Are you the responsible TTL for this dataset?,field_wbddh_responsible,Microdata,1
+Are you the responsible TTL for this dataset?,field_wbddh_responsible,Microdata,NA
 Are you the responsible TTL for this dataset?,field_wbddh_responsible,Other,1
 Collaborator Name(s),field_wbddh_collaborator_upi,Time Series,1
 Collaborator Name(s),field_wbddh_collaborator_upi,Geospatial,1
-Collaborator Name(s),field_wbddh_collaborator_upi,Microdata,1
+Collaborator Name(s),field_wbddh_collaborator_upi,Microdata,NA
 Collaborator Name(s),field_wbddh_collaborator_upi,Other,1
 Collections,NA,Time Series,1
 Collections,NA,Geospatial,1

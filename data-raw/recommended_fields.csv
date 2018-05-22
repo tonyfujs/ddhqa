@@ -11,10 +11,6 @@ Collaborator Name(s),field_wbddh_collaborator_upi,Time Series,1
 Collaborator Name(s),field_wbddh_collaborator_upi,Geospatial,1
 Collaborator Name(s),field_wbddh_collaborator_upi,Microdata,NA
 Collaborator Name(s),field_wbddh_collaborator_upi,Other,1
-Collections,NA,Time Series,1
-Collections,NA,Geospatial,1
-Collections,NA,Microdata,1
-Collections,NA,Other,1
 Custom License Information,field_wbddh_type_of_license,Time Series,1
 Custom License Information,field_wbddh_type_of_license,Geospatial,1
 Custom License Information,field_wbddh_type_of_license,Microdata,1
@@ -59,10 +55,6 @@ License,field_license_wbddh,Time Series,1
 License,field_license_wbddh,Geospatial,1
 License,field_license_wbddh,Microdata,1
 License,field_license_wbddh,Other,1
-Other Collections,NA,Time Series,1
-Other Collections,NA,Geospatial,1
-Other Collections,NA,Microdata,1
-Other Collections,NA,Other,1
 "Other Producer (s) Name, Affiliation, Role",field_wbddh_other_producer,Time Series,NA
 "Other Producer (s) Name, Affiliation, Role",field_wbddh_other_producer,Geospatial,NA
 "Other Producer (s) Name, Affiliation, Role",field_wbddh_other_producer,Microdata,1

@@ -73,5 +73,5 @@ Topics,field_topic,Microdata,1
 Topics,field_topic,Other,1
 TTL Name or UPI,field_wbddh_dsttl_upi,Time Series,1
 TTL Name or UPI,field_wbddh_dsttl_upi,Geospatial,1
-TTL Name or UPI,field_wbddh_dsttl_upi,Microdata,1
+TTL Name or UPI,field_wbddh_dsttl_upi,Microdata,NA
 TTL Name or UPI,field_wbddh_dsttl_upi,Other,1

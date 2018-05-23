@@ -5,9 +5,7 @@ get_field_format <- function(metadata_resource,
   out <- NA
 
   if (!is_blank(format_tid)) {
-    field_format <- subset(lovs,
-                           tid == format_tid & machine_name == "field_format",
-                           select = list_value_name)
+    field_format <- lovs[lovs$tid == format_tid & lovs$machine_name == "field_format", ]$list_value_name
     out <- unlist(field_format, use.names = FALSE)
   }
 
@@ -18,11 +16,8 @@ get_field_format <- function(metadata_resource,
 get_allowed_ext <- function(field_format) {
 
   if (!is.na(field_format)){
-    allowed <- subset(lookup_ext_to_form,
-                      list_value_name == field_format,
-                      select = allowed_exts)
-    temp <- strsplit(unlist(allowed, use.names = FALSE),
-                     split = "\\|")
+    allowed <- lookup_ext_to_form[lookup_ext_to_form$list_value_name == field_format, ]$allowed_exts
+    temp <- strsplit(unlist(allowed, use.names = FALSE), split = "\\|")
     out <- unlist(temp)
   } else {
     out <- NA

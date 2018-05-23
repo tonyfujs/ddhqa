@@ -17,22 +17,23 @@
 check_file_ext <- function(metadata_resource,
                            lovs = ddhconnect::get_lovs()) {
 
-  resource_nid <- unname(unlist(metadata_resource$nid))
+  resource_nid <- unlist(metadata_resource$nid, use.names = FALSE)
   field_format <- get_field_format(metadata_resource, lovs)
+  allowed_ext <- get_allowed_ext(field_format)
 
   path <- dkanr::get_resource_url(metadata_resource)
   file_ext <- get_file_ext(path)
 
-  if (is_blank(field_format) & is_blank(file_ext)) {
+  if (is_blank(allowed_ext) & is_blank(file_ext)) {
     out <- list("resource", resource_nid, "check_file_ext", "PASS", "Both are blank")
-  } else if (is_blank(field_format) & !is_blank(file_ext)) {
+  } else if (is_blank(allowed_ext) & !is_blank(file_ext)) {
     out <- list("resource", resource_nid, "check_file_ext", "FAIL", glue::glue("The field_format is missing, value should take a {file_ext} extenstion"))
-  } else if (!is_blank(field_format) & is_blank(file_ext)) {
-    out <- list("resource", resource_nid, "check_file_ext", "FAIL", glue::glue("The resource path is expected to take {field_format}"))
-  } else if (file_ext %in% field_format | file_ext == field_format) {
-    out <- list("resource", resource_nid, "check_file_ext", "PASS", glue::glue("The field_format ({field_format}) matches the resource's file ext ({file_ext})"))
+  } else if (!is_blank(allowed_ext) & is_blank(file_ext)) {
+    out <- list("resource", resource_nid, "check_file_ext", "FAIL", glue::glue("The resource path is expected to take {allowed_ext} extension(s)"))
+  } else if (file_ext == allowed_ext | file_ext %in% allowed_ext) {
+    out <- list("resource", resource_nid, "check_file_ext", "PASS", glue::glue("The field_format's ({field_format}) allowed types match the resource's file ext ({file_ext})"))
   } else {
-    out <- list("resource", resource_nid, "check_file_ext", "FAIL", glue::glue("The field_format ({field_format}) does not match the resource's file ext ({file_ext})"))
+    out <- list("resource", resource_nid, "check_file_ext", "FAIL", glue::glue("The field_format's ({field_format}) allowed types ({allowed_ext}) do not match the resource's file ext ({file_ext})"))
   }
 
   return(out)

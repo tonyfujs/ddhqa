@@ -1,13 +1,5 @@
 context("Tests supporting check for resource file extensions")
 
-# Define constant values
-# test_metadata <- list(
-#   "field_format" = "14",
-#   "field_upload" = "hi.org/bye.csv",
-#   "field_link_api" = "hi.org/bye.csv",
-#   "field_link_remote_file" = "hi.org/bye.csv"
-# )
-
 # Test get_field_format()
 test_that("Maps existing tids to list value names", {
   expect_equal(get_field_format(list("field_format" = "14")), "CSV")
@@ -36,8 +28,17 @@ test_that("Matches with upper/lower cases", {
   expect_equal(get_file_ext("abc.CSV"), "csv")
 })
 
-# # Test logic in check_file_ext()
-# #
+
+# Define constant values
+# test_metadata <- list(
+#   "field_format" = "14",
+#   "field_upload" = "hi.org/bye.csv",
+#   "field_link_api" = "hi.org/bye.csv",
+#   "field_link_remote_file" = "hi.org/bye.csv"
+# )
+
+# Test logic in check_file_ext()
 # test_that("Overall function works", {
 #   expect_equal(check_file_ext(test_metadata))
 # })
+# TODO: try mocking with nodes 94974, 97633, 94457, 94668

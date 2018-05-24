@@ -1,16 +1,16 @@
 form_name,machine_name,data_type,recommended
-Acronym,field_wbddh_acronym,Time Series,1
-Acronym,field_wbddh_acronym,Geospatial,1
-Acronym,field_wbddh_acronym,Microdata,1
-Acronym,field_wbddh_acronym,Other,1
+Acronym,field_wbddh_acronym,Time Series,NA
+Acronym,field_wbddh_acronym,Geospatial,NA
+Acronym,field_wbddh_acronym,Microdata,NA
+Acronym,field_wbddh_acronym,Other,NA
 Are you the responsible TTL for this dataset?,field_wbddh_responsible,Time Series,1
 Are you the responsible TTL for this dataset?,field_wbddh_responsible,Geospatial,1
 Are you the responsible TTL for this dataset?,field_wbddh_responsible,Microdata,NA
 Are you the responsible TTL for this dataset?,field_wbddh_responsible,Other,1
-Collaborator Name(s),field_wbddh_collaborator_upi,Time Series,1
-Collaborator Name(s),field_wbddh_collaborator_upi,Geospatial,1
+Collaborator Name(s),field_wbddh_collaborator_upi,Time Series,NA
+Collaborator Name(s),field_wbddh_collaborator_upi,Geospatial,NA
 Collaborator Name(s),field_wbddh_collaborator_upi,Microdata,NA
-Collaborator Name(s),field_wbddh_collaborator_upi,Other,1
+Collaborator Name(s),field_wbddh_collaborator_upi,Other,NA
 Custom License Information,field_wbddh_type_of_license,Time Series,NA
 Custom License Information,field_wbddh_type_of_license,Geospatial,NA
 Custom License Information,field_wbddh_type_of_license,Microdata,NA

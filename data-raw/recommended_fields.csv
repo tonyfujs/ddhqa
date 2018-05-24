@@ -11,10 +11,10 @@ Collaborator Name(s),field_wbddh_collaborator_upi,Time Series,1
 Collaborator Name(s),field_wbddh_collaborator_upi,Geospatial,1
 Collaborator Name(s),field_wbddh_collaborator_upi,Microdata,NA
 Collaborator Name(s),field_wbddh_collaborator_upi,Other,1
-Custom License Information,field_wbddh_type_of_license,Time Series,1
-Custom License Information,field_wbddh_type_of_license,Geospatial,1
-Custom License Information,field_wbddh_type_of_license,Microdata,1
-Custom License Information,field_wbddh_type_of_license,Other,1
+Custom License Information,field_wbddh_type_of_license,Time Series,NA
+Custom License Information,field_wbddh_type_of_license,Geospatial,NA
+Custom License Information,field_wbddh_type_of_license,Microdata,NA
+Custom License Information,field_wbddh_type_of_license,Other,NA
 Data Classification of a Dataset,field_wbddh_data_class,Time Series,1
 Data Classification of a Dataset,field_wbddh_data_class,Geospatial,1
 Data Classification of a Dataset,field_wbddh_data_class,Microdata,1
@@ -59,10 +59,10 @@ License,field_license_wbddh,Other,1
 "Other Producer (s) Name, Affiliation, Role",field_wbddh_other_producer,Geospatial,NA
 "Other Producer (s) Name, Affiliation, Role",field_wbddh_other_producer,Microdata,1
 "Other Producer (s) Name, Affiliation, Role",field_wbddh_other_producer,Other,NA
-Periodicity,field_wbddh_periodicity,Time Series,1
-Periodicity,field_wbddh_periodicity,Geospatial,1
-Periodicity,field_wbddh_periodicity,Microdata,NA
-Periodicity,field_wbddh_periodicity,Other,1
+Periodicity,field_frequency,Time Series,1
+Periodicity,field_frequency,Geospatial,1
+Periodicity,field_frequency,Microdata,NA
+Periodicity,field_frequency,Other,1
 Title,title,Time Series,1
 Title,title,Geospatial,1
 Title,title,Microdata,1

@@ -24,6 +24,23 @@ check_recom_fields <- function(metadata_dataset,
   rec_fields <- rec_fields[!is.na(rec_fields$recommended), ]
   clean_rec_fields <- rec_fields[["machine_name"]]
 
+  # only include if
+  if (length(metadata_dataset[["field_wbddh_data_class"]]) > 1) {
+    data_class <- unlist(metadata_dataset[["field_wbddh_data_class"]], use.names = FALSE)
+    ui_data_class <- lovs[lovs$tid == data_class, ]$list_value_name
+    if (ui_data_class %in% c("Public", "Not Specified")) {
+      clean_rec_fields <- c(clean_rec_fields, "field_exception_s_")
+    }
+  }
+
+  if (length(metadata_dataset[["field_license_wbddh"]]) > 1) {
+    license <- unlist(metadata_dataset[["field_license_wbddh"]], use.names = FALSE)
+    ui_license <- lovs[lovs$tid == license, ]$list_value_name
+    if (ui_data_class == "Custom License") {
+      clean_rec_fields <- c(clean_rec_fields, "field_wbddh_type_of_license")
+    }
+  }
+
   populated_fields <- metadata_dataset[lapply(metadata_dataset, length) > 0]
   missing_rec_fields <- setdiff(clean_rec_fields, names(populated_fields))
 
@@ -36,3 +53,4 @@ check_recom_fields <- function(metadata_dataset,
 
   return(out)
 }
+

@@ -35,10 +35,10 @@ Economy Coverage,field_wbddh_economy_coverage,Time Series,1
 Economy Coverage,field_wbddh_economy_coverage,Geospatial,1
 Economy Coverage,field_wbddh_economy_coverage,Microdata,NA
 Economy Coverage,field_wbddh_economy_coverage,Other,1
-Exception,field_exception_s_,Time Series,1
-Exception,field_exception_s_,Geospatial,1
-Exception,field_exception_s_,Microdata,1
-Exception,field_exception_s_,Other,1
+Exception,field_exception_s_,Time Series,NA
+Exception,field_exception_s_,Geospatial,NA
+Exception,field_exception_s_,Microdata,NA
+Exception,field_exception_s_,Other,NA
 "Funding Name, Abbreviation, Role",field_wbddh_funding_name,Time Series,NA
 "Funding Name, Abbreviation, Role",field_wbddh_funding_name,Geospatial,NA
 "Funding Name, Abbreviation, Role",field_wbddh_funding_name,Microdata,NA

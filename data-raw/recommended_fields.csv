@@ -21,7 +21,7 @@ Data Classification of a Dataset,field_wbddh_data_class,Microdata,1
 Data Classification of a Dataset,field_wbddh_data_class,Other,1
 Data Collection Dates,field_wbddh_data_dates,Time Series,NA
 Data Collection Dates,field_wbddh_data_dates,Geospatial,NA
-Data Collection Dates,field_wbddh_data_dates,Microdata,1
+Data Collection Dates,field_wbddh_data_dates,Microdata,NA
 Data Collection Dates,field_wbddh_data_dates,Other,NA
 Data Type,field_wbddh_data_type,Time Series,1
 Data Type,field_wbddh_data_type,Geospatial,1

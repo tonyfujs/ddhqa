@@ -9,10 +9,6 @@
 #' @export
 #'
 
-#TODO: check recommended_fields table
-# [ ] don't really need the recommended column, but double check
-# [ ] find the collections machine name or remove it from the table
-
 check_recom_fields <- function(metadata_dataset,
                                lovs = ddhconnect::get_lovs()) {
   dataset_nid <- unlist(metadata_dataset$nid, use.names = FALSE)
@@ -24,7 +20,7 @@ check_recom_fields <- function(metadata_dataset,
   rec_fields <- rec_fields[!is.na(rec_fields$recommended), ]
   clean_rec_fields <- rec_fields[["machine_name"]]
 
-  # only include if
+  # only include if matches conditions
   if (length(metadata_dataset[["field_wbddh_data_class"]]) > 1) {
     data_class <- unlist(metadata_dataset[["field_wbddh_data_class"]], use.names = FALSE)
     ui_data_class <- lovs[lovs$tid == data_class, ]$list_value_name

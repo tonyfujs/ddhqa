@@ -14,7 +14,7 @@ test_that("Confirms non-existent link", {
   metadata$field_link_remote_file$und[[1]]$url <- "bearsarecool.org"
   expect_equal(
     check_resource_link(metadata),
-    list("resource", "007", "007", "check_resource_links", "FAIL", glue::glue("No response, ", "check the link"))
+    list("resource", "007", "check_resource_links", "FAIL", glue::glue("No response, ", "check the link"))
   )
 })
 

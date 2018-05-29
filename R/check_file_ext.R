@@ -17,7 +17,7 @@
 check_file_ext <- function(metadata_resource,
                            lovs = ddhconnect::get_lovs()) {
 
-  resource_nid <- unlist(metadata_resource$nid, use.names = FALSE)
+  resource_nid <- unlist(metadata_resource[["nid"]], use.names = FALSE)
   field_format <- get_field_format(metadata_resource, lovs)
   allowed_ext <- get_allowed_ext(field_format)
 

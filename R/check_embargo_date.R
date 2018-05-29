@@ -11,8 +11,8 @@
 
 check_embargo_date <- function(metadata_dataset) {
 
-  embargo_date <- unlist(metadata_dataset$field_wbddh_ds_embargo_date, use.names = FALSE)
-  dataset_nid <- unlist(metadata_dataset$nid, use.names = FALSE)
+  embargo_date <- unlist(metadata_dataset[["field_wbddh_ds_embargo_date"]][["und"]][[1]][["value"]], use.names = FALSE)
+  dataset_nid <- unlist(metadata_dataset[["nid"]], use.names = FALSE)
 
   if (is_blank(embargo_date)) {
     out <- list("dataset", dataset_nid, "check_embargo_date", "PASS", "there is no embargo date")

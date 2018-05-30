@@ -37,7 +37,7 @@ check_recom_fields <- function(metadata_dataset,
     }
   }
 
-  populated_fields <- metadata_dataset[lapply(metadata_dataset, length) > 0]
+  populated_fields <- metadata_dataset[lapply(metadata_dataset, is_blank) == FALSE]
   missing_rec_fields <- setdiff(clean_rec_fields, names(populated_fields))
 
   if (length(missing_rec_fields) > 0) {

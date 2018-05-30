@@ -11,8 +11,8 @@
 
 check_recom_fields <- function(metadata_dataset,
                                lovs = ddhconnect::get_lovs()) {
-  dataset_nid <- unlist(metadata_dataset$nid, use.names = FALSE)
-  tid_type <- unlist(metadata_dataset$field_wbddh_data_type, use.names = FALSE)
+  dataset_nid <- unlist(metadata_dataset[["nid"]], use.names = FALSE)
+  tid_type <- unlist(metadata_dataset[["field_wbddh_data_type"]], use.names = FALSE)
   ui_name <- lovs[lovs$tid == tid_type, ]$list_value_name
 
 

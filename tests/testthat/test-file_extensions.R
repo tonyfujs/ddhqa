@@ -1,11 +1,23 @@
 context("Tests supporting check for resource file extensions")
 
+httptest::start_capturing(path = "./tests/testthat")
+dkanr::dkanr_setup(
+  url = "https://datacatalog.worldbank.org/",
+  username = Sys.getenv("ddh_username"),
+  password = Sys.getenv("ddh_password")
+)
+ddhconnect::get_lovs()
+httptest::stop_capturing()
+
+# constants
+lovs <- ddhconnect::get_lovs()
+
 # Test get_field_format()
 test_that("Maps existing tids to list value names", {
-  expect_equal(get_field_format(list("field_format" = "14")), "CSV")
-  expect_equal(get_field_format(list("field_format" = "1194")), "EXCEL")
-  expect_equal(get_field_format(list("field_format" = "659")), "CSV ZIP")
-  expect_equal(get_field_format(list("field_format" = "17")), "VECTOR")
+  expect_equal(get_field_format(list("field_format" = "14"), lovs), "CSV")
+  expect_equal(get_field_format(list("field_format" = "1194"), lovs), "EXCEL")
+  expect_equal(get_field_format(list("field_format" = "659"), lovs), "CSV ZIP")
+  expect_equal(get_field_format(list("field_format" = "17"), lovs), "VECTOR")
 })
 
 # Test get_allowed_ext()
@@ -13,7 +25,7 @@ test_that("Maps list value names to allowed file extensions", {
   expect_equal(get_allowed_ext("CSV"), "csv")
   expect_equal(get_allowed_ext("EXCEL"), c("xls", "xlsx", "ods"))
   expect_equal(get_allowed_ext("CSV ZIP"), "zip")
-  expect_equal(get_allowed_ext("VECTOR"), "VECTOR")
+  expect_equal(get_allowed_ext("VECTOR"), "pdf")
   expect_equal(get_allowed_ext(NA), NA)
 })
 

@@ -103,7 +103,14 @@ test_that("Handles update schedule", {
 
 
 # all test cases for update_frequency
+# constant
 metadata <- list("nid" = "007")
+# [["field_wbddh_update_frequency"]][["und"]]
+# [["field_wbddh_next_expected_update"]][["und"]][[1]][["value"]]
+# [["field_wbddh_modified_date"]][["und"]][[1]][["value"]]
+# [["field_wbddh_update_schedule"]][["und"]][[1]][["safe_value"]]
+
+
 # Daily
 metadata$field_wbddh_update_frequency <- "516"
 # Weekly

@@ -87,17 +87,17 @@ test_that("Handles update schedule", {
   update <- "15-Dec"
   expect_equal(
     use_update_schedule(nid, update, modified),
-    list("dataset", "007", "check_next_update", "FAIL", glue::glue("An update should have occurred on ", "2018-12-15"))
+    list("dataset", "007", "check_next_update", "PASS", glue::glue("The next expected update is ", "2018-12-15"))
   )
   update <- "2016"
   expect_equal(
     use_update_schedule(nid, update, modified),
-    "2016-01-01"
+    list("dataset", "007", "check_next_update", "PASS", "Updated on time")
   )
   update <- "2019"
   expect_equal(
     use_update_schedule(nid, update, modified),
-    "2016-01-01"
+    list("dataset", "007", "check_next_update", "PASS", glue::glue("The next expected update is ", "2019-01-01"))
   )
 })
 

@@ -2,6 +2,7 @@
 
 export(check_file_ext)
 export(check_missing)
+export(check_next_update)
 export(check_overall)
 export(check_recom_fields)
 export(check_resource_link)

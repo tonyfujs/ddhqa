@@ -9,32 +9,45 @@
 #' @export
 #'
 
+# TODO: check node 94562, json structure is different than expected val, seems like legacy
+# [ ] metadata_dataset[["field_wbddh_update_schedule"]]
+# [ ] metadata_dataset[["field_wbddh_next_expected_update"]]
+# [ ] metadata_dataset[["field_wbddh_modified_date"]]
+
 check_next_update <- function(metadata_dataset,
-                               lovs = ddhconnect::get_lovs()) {
+                              lovs = ddhconnect::get_lovs()) {
 
   dataset_nid <- unlist(metadata_dataset[["nid"]], use.names = FALSE)
-  update <- unlist(metadata_dataset[["field_wbddh_next_expected_update"]][["und"]][[1]][["value"]], use.names = FALSE)
-  update_date <- as.Date(update)
-  update_freq_tid <- unlist(metadata_dataset[["field_wbddh_update_frequency"]][["und"]], use.names = FALSE)
-  update_freq_ui <- lovs[lovs$tid == update_freq_tid & lovs$machine_name == "field_wbddh_update_frequency", ]$list_value_name
+  update_freq <- unlist(metadata_dataset[["field_wbddh_update_frequency"]], use.names = FALSE)
+  update_schedule <- unlist(metadata_dataset[["field_wbddh_update_schedule"]], use.names = FALSE)
   modified <- unlist(metadata_dataset[["field_wbddh_modified_date"]][["und"]][[1]][["value"]], use.names = FALSE)
   modified_date <- as.Date(modified)
-  update_schedule <- unlist(metadata_dataset[["field_wbddh_update_schedule"]][["und"]][[1]][["safe_value"]])
 
-  if (!is_blank(update_freq_ui)) {
+  if (!is_blank(update_freq)) {
+
+    update_freq_tid <- unlist(metadata_dataset[["field_wbddh_update_frequency"]][["und"]], use.names = FALSE)
+    update_freq_ui <- lovs[lovs$tid == update_freq_tid & lovs$machine_name == "field_wbddh_update_frequency", ]$list_value_name
+
     if (update_freq_ui == "Daily") {
+
       if (modified_date == Sys.Date()) {
-        out <- list("dataset", dataset_nid, "check_next_update", "PASS", "next expected update is before the last modified date")
+        out <- list("dataset", dataset_nid, "check_next_update", "PASS", "dataset is updated")
       } else {
-        out <- list("dataset", dataset_nid, "check_next_update", "FAIL", "next expected update is before the last modified date")
+        out <- list("dataset", dataset_nid, "check_next_update", "FAIL", "this dataset needs to be updated (daily update)")
       }
+
     } else if (update_freq_ui == "Weekly") {
+
       if ((Sys.Date() - modified_date) <= 7) {
-        out <- list("dataset", dataset_nid, "check_next_update", "PASS", "next expected update is before the last modified date")
+        out <- list("dataset", dataset_nid, "check_next_update", "PASS", "dataset is updated")
       } else {
-        out <- list("dataset", dataset_nid, "check_next_update", "FAIL", "next expected update is before the last modified date")
+        out <- list("dataset", dataset_nid, "check_next_update", "FAIL", "this dataset needs to be updated (weekly update)")
       }
+
     } else if (update_freq_ui == "No fixed schedule") {
+
+      update <- unlist(metadata_dataset[["field_wbddh_next_expected_update"]][["und"]][[1]][["value"]], use.names = FALSE)
+      update_date <- as.Date(update)
       if (update_date > Sys.Date()) {
         out <- list("dataset", dataset_nid, "check_next_update", "PASS", "next expected update is before the last modified date")
       } else if (update_date > modified_date) {
@@ -42,8 +55,12 @@ check_next_update <- function(metadata_dataset,
       } else {
         out <- list("dataset", dataset_nid, "check_next_update", "FAIL", "next expected update needs to be updated to a later date")
       }
+
     } else {
-      use_update_schedule(dataset_nid, update_schedule, modified_date)
+
+      update_schedule <- unlist(metadata_dataset[["field_wbddh_update_schedule"]][["und"]][[1]][["safe_value"]], use.names = FALSE)
+      out <- use_update_schedule(dataset_nid, update_schedule, modified_date)
+
     }
 
   } else if (!is_blank(update_date) | !is_blank(update_schedule)){

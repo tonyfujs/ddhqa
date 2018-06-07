@@ -101,22 +101,55 @@ test_that("Handles update schedule", {
   )
 })
 
+httptest::start_capturing(path = "./tests/testthat")
+dkanr::dkanr_setup(
+  url = "https://datacatalog.worldbank.org/",
+  username = Sys.getenv("ddh_username"),
+  password = Sys.getenv("ddh_password")
+)
+lovs <- ddhconnect::get_lovs()
+httptest::stop_capturing()
 
 # all test cases for update_frequency
-# constant
+# test against node 94562 and add capturing for lovs
 metadata <- list("nid" = "007")
-# [["field_wbddh_update_frequency"]][["und"]]
-# [["field_wbddh_next_expected_update"]][["und"]][[1]][["value"]]
-# [["field_wbddh_modified_date"]][["und"]][[1]][["value"]]
-# [["field_wbddh_update_schedule"]][["und"]][[1]][["safe_value"]]
+metadata$field_wbddh_update_frequency$id <- "531"
+metadata$field_wbddh_next_expected_update$und[[1]]$value <- "2016-07-30 00:00:00"
+metadata$field_wbddh_modified_date$und[[1]]$value <- "2017-06-14 00:00:00"
+metadata$field_wbddh_update_schedule$und[[1]]$safe_value <- "February, June, August, November"
+# format looks off
+# metadata$field_wbddh_update_frequency$und
+# metadata$field_wbddh_next_expected_update <- "2016-07-30 00:00:00"
+# metadata$field_wbddh_modified_date$und[[1]]$value <- "2017-06-14 00:00:00"
+# metadata$field_wbddh_update_schedule$und[[1]]$safe_value <- "February, June, August, November"
+httptest::with_mock_api({
+  test_that("Different vals for update freq work", {
+    # Daily
+    lovs <- ddhconnect::get_lovs()
+    metadata$field_wbddh_update_frequency$und <- "516"
+    expect_equal(
+      check_next_update(metadata, lovs),
+      list("dataset", "007", "check_next_update", "FAIL", "this dataset needs to be updated (daily update)")
+    )
+    # Weekly
+    metadata$field_wbddh_update_frequency$und <- "521"
+    expect_equal(
+      check_next_update(metadata, lovs),
+      list("dataset", "007", "check_next_update", "FAIL", "this dataset needs to be updated (weekly update)")
+    )
+    # No fixed schedule
+    metadata$field_wbddh_update_frequency$und <- "526"
+    expect_equal(
+      check_next_update(metadata, lovs),
+      list("dataset", "007", "check_next_update", "FAIL", "next expected update needs to be updated to a later date")
+    )
+    # No further updates planned
+    metadata$field_wbddh_update_frequency$und <- "511"
+    expect_equal(
+      check_next_update(metadata, lovs),
+      list("dataset", "007", "check_next_update", "FAIL", glue::glue("An update should have occurred on ", "2018-06-01"))
+    )
+    # Other
+  })
+})
 
-
-# Daily
-metadata$field_wbddh_update_frequency <- "516"
-# Weekly
-metadata$field_wbddh_update_frequency <- "521"
-# No fixed schedule
-metadata$field_wbddh_update_frequency <- "526"
-# No further updates planned
-metadata$field_wbddh_update_frequency <- "511"
-# Other

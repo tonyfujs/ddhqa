@@ -24,7 +24,7 @@ check_recom_fields <- function(metadata_dataset,
   if (length(metadata_dataset[["field_wbddh_data_class"]]) > 1) {
     data_class <- unlist(metadata_dataset[["field_wbddh_data_class"]], use.names = FALSE)
     ui_data_class <- lovs[lovs$tid == data_class, ]$list_value_name
-    if (ui_data_class %in% c("Public", "Not Specified")) {
+    if (ui_data_class %in% c("Official Use Only", "Confidential", "Strictly Confidential")) {
       clean_rec_fields <- c(clean_rec_fields, "field_exception_s_")
     }
   }

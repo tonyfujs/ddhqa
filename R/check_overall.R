@@ -44,6 +44,7 @@ check_overall <- function(nid_dataset,
   nid_resources <- unlist(dataset$field_resources, use.names = FALSE)
 
   res_checks <- dplyr::filter(all_checks, node_type == "resource")
+  res_checks <- add_privacy_check(dataset, res_checks)
   res_out <- vector(mode = "list", length = length(nid_resources))
   if (nrow(res_checks) > 0) {
     for (i in seq_along(nid_resources)) {

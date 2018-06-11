@@ -1,22 +1,28 @@
 get_field_format <- function(metadata_resource,
                              lovs = ddhconnect::get_lovs()) {
 
-  format_tid <- unname(unlist(metadata_resource[["field_format"]]))
+  format_tid <- unlist(metadata_resource[["field_format"]], use.names = FALSE)
   out <- NA
 
   if (!is_blank(format_tid)) {
-    temp <- subset(lovs, tid == format_tid, select = list_value_name)
-    field_format <- unname(unlist(temp))
-
-    if (!is.na(field_format)){
-      allowed <- subset(lookup_ext_to_form,
-                        list_value_name == field_format,
-                        select = allowed_exts)
-      temp <- strsplit(unname(unlist(allowed)),
-                       split = "\\|")
-      out <- unlist(temp)
-    }
+    field_format <- lovs[lovs$tid == format_tid & lovs$machine_name == "field_format", ]$list_value_name
+    out <- unlist(field_format, use.names = FALSE)
   }
+
+  return(out)
+}
+
+
+get_allowed_ext <- function(field_format) {
+
+  if (!is.na(field_format)){
+    allowed <- lookup_ext_to_form[lookup_ext_to_form$list_value_name == field_format, ]$allowed_exts
+    temp <- strsplit(unlist(allowed, use.names = FALSE), split = "\\|")
+    out <- unlist(temp)
+  } else {
+    out <- NA
+  }
+
   return(out)
 }
 

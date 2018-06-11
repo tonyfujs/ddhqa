@@ -24,7 +24,7 @@ check_file_path <- function(metadata_resource) {
     } else if (data_class_ui != "Public" & grepl("ddhfiles/public", upload_path)) {
       out <- list("resource", resource_nid, "check_file_path", "FAIL", "resource is not public but file path is public")
     } else {
-      out <- list("resource", resource_nid, "check_file_path", "FAIL", "resource is internal and file path is internal")
+      out <- list("resource", resource_nid, "check_file_path", "PASS", "resource is internal and file path is internal")
     }
   } else {
     out <- list("resource", resource_nid, "check_file_path", "PASS", "resource is not uploaded")

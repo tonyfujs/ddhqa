@@ -4,4 +4,5 @@ check_file_ext,resource
 check_resource_link,resource
 check_unpublished,resource
 check_missing,dataset
+check_privacy_status,resource
 check_embargo_date,dataset

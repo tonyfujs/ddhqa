@@ -6,3 +6,4 @@ check_unpublished,resource
 check_missing,dataset
 check_privacy_status,resource
 check_embargo_date,dataset
+check_file_path,resource

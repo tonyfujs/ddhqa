@@ -9,15 +9,18 @@ dkanr::dkanr_setup(
 ddhconnect::get_lovs()
 httptest::stop_capturing()
 
-# constants
-lovs <- ddhconnect::get_lovs()
 
-# Test get_field_format()
-test_that("Maps existing tids to list value names", {
-  expect_equal(get_field_format(list("field_format" = "14"), lovs), "CSV")
-  expect_equal(get_field_format(list("field_format" = "1194"), lovs), "EXCEL")
-  expect_equal(get_field_format(list("field_format" = "659"), lovs), "CSV ZIP")
-  expect_equal(get_field_format(list("field_format" = "17"), lovs), "VECTOR")
+httptest::with_mock_api({
+  # constants
+  lovs <- ddhconnect::get_lovs()
+
+  # Test get_field_format()
+  test_that("Maps existing tids to list value names", {
+    expect_equal(get_field_format(list("field_format" = "14"), lovs), "CSV")
+    expect_equal(get_field_format(list("field_format" = "1194"), lovs), "EXCEL")
+    expect_equal(get_field_format(list("field_format" = "659"), lovs), "CSV ZIP")
+    expect_equal(get_field_format(list("field_format" = "17"), lovs), "VECTOR")
+  })
 })
 
 # Test get_allowed_ext()

@@ -21,10 +21,10 @@ check_resource_link <- function(metadata_resource) {
     cat("ERROR :", conditionMessage(e), "\n")
   })
 
-  if (is.null(resp)) {
-    code <- "No response"
-  } else {
+  if (!is.null(resp)) {
     code <- httr::status_code(resp)
+  } else {
+    code <- "No response"
   }
 
   if (grepl("geowb.worldbank.org", url)) {

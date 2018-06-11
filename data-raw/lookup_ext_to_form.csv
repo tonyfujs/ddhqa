@@ -21,7 +21,7 @@ PNG,png
 POWERPOINT,ppts|ppt
 PYTHON,zip|txt|py
 R,r
-RASTER,"jpg, tiff, gif, png"
+RASTER,jpg|tiff|gif|png
 SD,
 SHP ZIP,zip
 SPSS,sav|zsav|por|dat

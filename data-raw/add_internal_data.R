@@ -10,7 +10,6 @@ valid_file_ext <- readr::read_csv("./data-raw/valid_file_exts.csv",
 
 lookup_ext_to_form <- readr::read_csv("./data-raw/lookup_ext_to_form.csv")
 
-
 recommended_fields <- readr::read_csv("./data-raw/recommended_fields.csv")
 
 all_checks <- readr::read_csv("./data-raw/all_checks.csv")

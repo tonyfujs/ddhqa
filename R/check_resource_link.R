@@ -21,13 +21,15 @@ check_resource_link <- function(metadata_resource) {
     cat("ERROR :", conditionMessage(e), "\n")
   })
 
-  if (is.null(resp)) {
-    code <- "No response"
-  } else {
+  if (!is.null(resp)) {
     code <- httr::status_code(resp)
+  } else {
+    code <- "No response"
   }
 
-  if (code == "200") {
+  if (grepl("geowb.worldbank.org", url)) {
+    out <- list("resource", resource_nid, "check_resource_links", "PASS", glue::glue("{code}, esri link, you're good to go"))
+  } else if (code == "200") {
     out <- list("resource", resource_nid, "check_resource_links", "PASS", glue::glue("{code}, you're good to go"))
   } else {
     out <- list("resource", resource_nid, "check_resource_links", "FAIL", glue::glue("{code}, check the link"))

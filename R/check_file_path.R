@@ -8,7 +8,8 @@
 #' @export
 #'
 
-check_file_path <- function(metadata_resource) {
+check_file_path <- function(metadata_resource,
+                            lovs = ddhconnect::get_lovs()) {
 
   resource_nid <- unlist(metadata_resource[["nid"]], use.names = FALSE)
   upload_path <- unlist(metadata_resource[["field_upload"]], use.names = FALSE)

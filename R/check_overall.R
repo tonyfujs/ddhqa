@@ -13,6 +13,7 @@
 #TODO: better handle the checks parameter
 # c("check_file_ext", "check_missing", "check_recom_fields", "check_resource_link", "check_unpublished" )
 #TODO: break function into smaller pieces and switch to lapply(funcs, function(f) f(dataset))
+#TODO: should lovs be a param in the check functions to avoid multiple calls?
 
 check_overall <- function(nid_dataset,
                           checks = "all",

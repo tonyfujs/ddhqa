@@ -4,7 +4,7 @@
 \alias{check_file_path}
 \title{check_file_path}
 \usage{
-check_file_path(metadata_resource)
+check_file_path(metadata_resource, lovs = ddhconnect::get_lovs())
 }
 \arguments{
 \item{metadata_resource}{list: output of get_metadata() for a resource}

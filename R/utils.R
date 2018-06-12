@@ -15,7 +15,7 @@ get_field_format <- function(metadata_resource,
 
 get_allowed_ext <- function(field_format) {
 
-  if (!is.na(field_format)){
+  if (!is_blank(field_format)){
     allowed <- lookup_ext_to_form[lookup_ext_to_form$list_value_name == field_format, ]$allowed_exts
     temp <- strsplit(unlist(allowed, use.names = FALSE), split = "\\|")
     out <- unlist(temp)

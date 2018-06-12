@@ -4,7 +4,7 @@
 \alias{check_privacy_status}
 \title{check_privacy_status}
 \usage{
-check_privacy_status(metadata_resource)
+check_privacy_status(metadata_resource, lovs = ddhconnect::get_lovs())
 }
 \arguments{
 \item{metadata_resource}{list: output of get_metadata() for a resource}

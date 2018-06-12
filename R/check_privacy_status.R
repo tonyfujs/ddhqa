@@ -8,7 +8,8 @@
 #' @export
 #'
 
-check_privacy_status <- function(metadata_resource) {
+check_privacy_status <- function(metadata_resource,
+                                 lovs = ddhconnect::get_lovs()) {
 
   dataset_nid <- unlist(metadata_resource[["field_dataset_ref"]], use.names = FALSE)
   resource_nid <- unlist(metadata_resource[["nid"]], use.names = FALSE)

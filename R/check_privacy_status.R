@@ -1,6 +1,6 @@
 #' check_privacy_status
 #'
-#' Check if the confidential/office use only dataset has public resources
+#' Check if the confidential/official use only dataset has public resources
 #'
 #' @param metadata_resource list: output of get_metadata() for a resource
 #'

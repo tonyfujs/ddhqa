@@ -20,6 +20,7 @@ check_file_ext <- function(metadata_resource,
   resource_nid <- unlist(metadata_resource[["nid"]], use.names = FALSE)
   field_format <- get_field_format(metadata_resource, lovs)
   allowed_ext <- get_allowed_ext(field_format)
+  allowed_collapsed <- glue::glue_collapse(allowed_ext, sep = ",")
 
   path <- dkanr::get_resource_url(metadata_resource)
   file_ext <- get_file_ext(path)
@@ -29,11 +30,10 @@ check_file_ext <- function(metadata_resource,
   } else if (is_blank(allowed_ext) & !is_blank(file_ext)) {
     out <- list("resource", resource_nid, "check_file_ext", "FAIL", glue::glue("The field_format is missing, value should take a {file_ext} extenstion"))
   } else if (!is_blank(allowed_ext) & is_blank(file_ext)) {
-    out <- list("resource", resource_nid, "check_file_ext", "FAIL", glue::glue("The resource path is expected to take {allowed_ext} extension(s)"))
+    out <- list("resource", resource_nid, "check_file_ext", "FAIL", glue::glue("The resource path is expected to take {allowed_collapsed} extension(s)"))
   } else if (file_ext == allowed_ext | file_ext %in% allowed_ext) {
     out <- list("resource", resource_nid, "check_file_ext", "PASS", glue::glue("The field_format's ({field_format}) allowed types match the resource's file ext ({file_ext})"))
   } else {
-    allowed_collapsed <- glue::glue_collapse(allowed_ext, sep = ",")
     out <- list("resource", resource_nid, "check_file_ext", "FAIL", glue::glue("The field_format's ({field_format}) allowed types ({allowed_collapsed}) do not match the resource's file ext ({file_ext})"))
   }
 

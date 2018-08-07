@@ -13,5 +13,5 @@ check_privacy_status(metadata_resource, lovs = ddhconnect::get_lovs())
 character vector
 }
 \description{
-Check if the confidential/office use only dataset has public resources
+Check if the confidential/official use only dataset has public resources
 }

@@ -33,7 +33,8 @@ check_file_ext <- function(metadata_resource,
   } else if (file_ext == allowed_ext | file_ext %in% allowed_ext) {
     out <- list("resource", resource_nid, "check_file_ext", "PASS", glue::glue("The field_format's ({field_format}) allowed types match the resource's file ext ({file_ext})"))
   } else {
-    out <- list("resource", resource_nid, "check_file_ext", "FAIL", glue::glue("The field_format's ({field_format}) allowed types ({allowed_ext}) do not match the resource's file ext ({file_ext})"))
+    allowed_collapsed <- glue::glue_collapse(allowed_ext, sep = ",")
+    out <- list("resource", resource_nid, "check_file_ext", "FAIL", glue::glue("The field_format's ({field_format}) allowed types ({allowed_collapsed}) do not match the resource's file ext ({file_ext})"))
   }
 
   return(out)

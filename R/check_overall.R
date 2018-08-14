@@ -71,6 +71,10 @@ check_overall <- function(nid_dataset,
   }
 
   out <- dplyr::bind_rows(data_out, res_out)
+  out$url <- paste0("<a href='", "https://datacatalog.worldbank.org/node/",
+                    out$node_id, "' target='_blank'>",
+                    "https://datacatalog.worldbank.org/node/", out$node_id,
+                    "</a>")
 
   return(out)
 }

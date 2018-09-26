@@ -2,7 +2,7 @@
 #'
 #' Check for 404 errors in resource links
 #'
-#' @param metadata_resources list: object returned by get_metadata_resources or get_metadata_all
+#' @param metadata_resources list: object returned by get_metadata
 #'
 #' @return dataframe
 #' @export

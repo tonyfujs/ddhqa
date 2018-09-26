@@ -12,6 +12,8 @@
 
 check_resource_link <- function(metadata_resource) {
 
+  lovs = ddhconnect::get_lovs()
+
   url <- dkanr::get_resource_url(metadata_resource)
   resource_nid <- unlist(metadata_resource$nid, use.names = FALSE)
 
@@ -40,7 +42,7 @@ check_resource_link <- function(metadata_resource) {
 
     class <- unlist(metadata_resource$field_wbddh_data_class, use.names = FALSE)
 
-    if (class %in% c('360', '361')){
+    if (class %in% lovs[grep('Confidential', lovs$list_value_name, ignore.case = T),]$tid ) {
       out <- list("resource", resource_nid, "check_resource_links", "PASS", glue::glue("{code},confidential resource, you're good to go"))
     } else {
       out <- list("resource", resource_nid, "check_resource_links", "FAIL", glue::glue("{code}, check the link"))

@@ -27,12 +27,24 @@ check_resource_link <- function(metadata_resource) {
     code <- "No response"
   }
 
-  if (grepl("geowb.worldbank.org", url)) {
-    out <- list("resource", resource_nid, "check_resource_links", "PASS", glue::glue("{code}, esri link, you're good to go"))
-  } else if (code == "200") {
-    out <- list("resource", resource_nid, "check_resource_links", "PASS", glue::glue("{code}, you're good to go"))
-  } else {
-    out <- list("resource", resource_nid, "check_resource_links", "FAIL", glue::glue("{code}, check the link"))
+  if (length(url)>0){
+
+    if (grepl("geowb.worldbank.org", url)) {
+      out <- list("resource", resource_nid, "check_resource_links", "PASS", glue::glue("{code}, esri link, you're good to go"))
+    } else if (code == "200") {
+      out <- list("resource", resource_nid, "check_resource_links", "PASS", glue::glue("{code}, you're good to go"))
+    } else {
+      out <- list("resource", resource_nid, "check_resource_links", "FAIL", glue::glue("{code}, check the link"))
+    }
+  } else{
+
+    class <- unlist(metadata_resource$field_wbddh_data_class, use.names = FALSE)
+
+    if (class %in% c('360', '361')){
+      out <- list("resource", resource_nid, "check_resource_links", "PASS", glue::glue("{code},confidential resource, you're good to go"))
+    } else {
+      out <- list("resource", resource_nid, "check_resource_links", "FAIL", glue::glue("{code}, check the link"))
+    }
   }
 
   return(out)

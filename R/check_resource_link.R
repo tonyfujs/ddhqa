@@ -29,7 +29,7 @@ check_resource_link <- function(metadata_resource) {
     code <- "No response"
   }
 
-  if (length(url)>0){
+  if (length(url) > 0){
 
     if (grepl("geowb.worldbank.org", url)) {
       out <- list("resource", resource_nid, "check_resource_links", "PASS", glue::glue("{code}, esri link, you're good to go"))
@@ -42,7 +42,7 @@ check_resource_link <- function(metadata_resource) {
 
     class <- unlist(metadata_resource$field_wbddh_data_class, use.names = FALSE)
 
-    if (class %in% lovs[grep('Confidential', lovs$list_value_name, ignore.case = T),]$tid ) {
+    if (class %in% lovs[grep("Confidential", lovs$list_value_name, ignore.case = T), ]$tid) {
       out <- list("resource", resource_nid, "check_resource_links", "PASS", glue::glue("{code},confidential resource, you're good to go"))
     } else {
       out <- list("resource", resource_nid, "check_resource_links", "FAIL", glue::glue("{code}, check the link"))

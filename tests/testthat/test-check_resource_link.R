@@ -34,7 +34,6 @@ test_that("Catch Confindential", {
     check_resource_link(metadata),
     list("resource", "007", "check_resource_links", "PASS", glue::glue("No response,", "confidential resource, you're good to go"))
   )
-
 })
 
 test_that("Catch Strict Confindential", {

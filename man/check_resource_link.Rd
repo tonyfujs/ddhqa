@@ -7,7 +7,7 @@
 check_resource_link(metadata_resource)
 }
 \arguments{
-\item{metadata_resources}{list: object returned by get_metadata_resources or get_metadata_all}
+\item{metadata_resources}{list: object returned by get_metadata}
 }
 \value{
 dataframe

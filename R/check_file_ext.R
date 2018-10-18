@@ -14,8 +14,6 @@
 #[ ] only select if populated in one of the following fields; `field_upload, field_link_api, field_link_remote_file`
 #[ ] deal with html in extension `is_blank(field_format) & !is_blank(file_ext)`
 
-# r_nid 93789
-# r_nid 100912
 
 check_file_ext <- function(metadata_resource,
                            lovs = ddhconnect::get_lovs()) {

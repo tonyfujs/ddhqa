@@ -1,14 +1,14 @@
 context("Tests check if resource file extension match")
 
-httptest::start_capturing(path = "./tests/testthat")
-dkanr::dkanr_setup(
-  url = "https://datacatalog.worldbank.org/",
-  username = Sys.getenv("ddh_username"),
-  password = Sys.getenv("ddh_password")
-)
-ddhconnect::get_metadata(nid = "140158")
-ddhconnect::get_lovs()
-httptest::stop_capturing()
+# httptest::start_capturing(path = "./tests/testthat")
+# dkanr::dkanr_setup(
+#   url = "https://datacatalog.worldbank.org/",
+#   username =  Sys.getenv("ddh_username"),
+#   password =   Sys.getenv("ddh_password")
+# )
+# ddhconnect::get_metadata(nid = "93789")
+# ddhconnect::get_lovs()
+# httptest::stop_capturing()
 
 httptest::with_mock_api({
   test_that("The resource is a external link", {
@@ -60,7 +60,7 @@ httptest::with_mock_api({
     lovs <- ddhconnect::get_lovs()
     expect_equal(
       check_file_ext(metadata, lovs),
-      list("resource", "93789", "check_file_ext", "FAIL",  glue::glue("The resource path is expected to take {allowed_collapsed} extension(s)"))
+      list("resource", "93789", "check_file_ext", "FAIL",  glue::glue("The resource path is expected to take csv extension(s)"))
     )
   })
 })
@@ -75,7 +75,7 @@ httptest::with_mock_api({
     lovs <- ddhconnect::get_lovs()
     expect_equal(
       check_file_ext(metadata, lovs),
-      list("resource", "93789", "check_file_ext", "FAIL", glue::glue("The field_format's ({field_format}) allowed types ({allowed_collapsed}) do not match the resource's file ext ({file_ext})"))
+      list("resource", "93789", "check_file_ext", "FAIL", glue::glue("The field_format's (GeoJSON) allowed types (geojson,json) do not match the resource's file ext (csv)"))
     )
   })
 })

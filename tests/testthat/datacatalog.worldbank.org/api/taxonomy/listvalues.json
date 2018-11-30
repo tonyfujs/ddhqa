@@ -356,6 +356,24 @@
     {
         "vocabulary_name": "tags",
         "machine_name": "field_tags",
+        "list_value_name": "energydata.info",
+        "tid": "1437"
+    },
+    {
+        "vocabulary_name": "tags",
+        "machine_name": "field_tags",
+        "list_value_name": "Environment",
+        "tid": "1422"
+    },
+    {
+        "vocabulary_name": "tags",
+        "machine_name": "field_tags",
+        "list_value_name": "ESA_WB",
+        "tid": "1421"
+    },
+    {
+        "vocabulary_name": "tags",
+        "machine_name": "field_tags",
         "list_value_name": "Finance",
         "tid": "1360"
     },
@@ -500,6 +518,12 @@
     {
         "vocabulary_name": "tags",
         "machine_name": "field_tags",
+        "list_value_name": "Public-Private Partnership",
+        "tid": "1423"
+    },
+    {
+        "vocabulary_name": "tags",
+        "machine_name": "field_tags",
         "list_value_name": "Rainfall",
         "tid": "1237"
     },
@@ -508,6 +532,18 @@
         "machine_name": "field_tags",
         "list_value_name": "ram-admin",
         "tid": "1413"
+    },
+    {
+        "vocabulary_name": "tags",
+        "machine_name": "field_tags",
+        "list_value_name": "ram-poi",
+        "tid": "1425"
+    },
+    {
+        "vocabulary_name": "tags",
+        "machine_name": "field_tags",
+        "list_value_name": "ram-pop",
+        "tid": "1426"
     },
     {
         "vocabulary_name": "tags",
@@ -580,6 +616,12 @@
         "machine_name": "field_tags",
         "list_value_name": "test",
         "tid": "1217"
+    },
+    {
+        "vocabulary_name": "tags",
+        "machine_name": "field_tags",
+        "list_value_name": "testtag",
+        "tid": "1435"
     },
     {
         "vocabulary_name": "tags",
@@ -1022,7 +1064,7 @@
     {
         "vocabulary_name": "kind_of_data",
         "machine_name": "field_wbddh_kind_of_data",
-        "list_value_name": "Census\/enumeration data",
+        "list_value_name": "Census/enumeration data",
         "tid": "856"
     },
     {
@@ -1034,7 +1076,7 @@
     {
         "vocabulary_name": "kind_of_data",
         "machine_name": "field_wbddh_kind_of_data",
-        "list_value_name": "Event\/transaction data",
+        "list_value_name": "Event/transaction data",
         "tid": "859"
     },
     {
@@ -1046,7 +1088,7 @@
     {
         "vocabulary_name": "kind_of_data",
         "machine_name": "field_wbddh_kind_of_data",
-        "list_value_name": "Observation data\/ratings",
+        "list_value_name": "Observation data/ratings",
         "tid": "860"
     },
     {
@@ -2936,7 +2978,7 @@
     {
         "vocabulary_name": "geographical_coverage",
         "machine_name": "field_wbddh_country",
-        "list_value_name": "C\u00f4te d'Ivoire",
+        "list_value_name": "Côte d'Ivoire",
         "tid": "88"
     },
     {
@@ -3020,7 +3062,7 @@
     {
         "vocabulary_name": "geographical_coverage",
         "machine_name": "field_wbddh_country",
-        "list_value_name": "Cura\u00e7ao",
+        "list_value_name": "Curaçao",
         "tid": "33"
     },
     {
@@ -3542,7 +3584,7 @@
     {
         "vocabulary_name": "geographical_coverage",
         "machine_name": "field_wbddh_country",
-        "list_value_name": "S\u00e3o Tom\u00e9 and Principe",
+        "list_value_name": "São Tomé and Principe",
         "tid": "226"
     },
     {
@@ -3572,7 +3614,7 @@
     {
         "vocabulary_name": "geographical_coverage",
         "machine_name": "field_wbddh_country",
-        "list_value_name": "St. Barth\u00e9lemy",
+        "list_value_name": "St. Barthélemy",
         "tid": "1352"
     },
     {
@@ -3710,14 +3752,14 @@
     {
         "vocabulary_name": "geographical_coverage",
         "machine_name": "field_wbddh_country",
-        "list_value_name": "Romania",
-        "tid": "216"
+        "list_value_name": "Eswatini",
+        "tid": "245"
     },
     {
         "vocabulary_name": "geographical_coverage",
         "machine_name": "field_wbddh_country",
-        "list_value_name": "Swaziland",
-        "tid": "245"
+        "list_value_name": "Romania",
+        "tid": "216"
     },
     {
         "vocabulary_name": "geographical_coverage",
@@ -3866,7 +3908,7 @@
     {
         "vocabulary_name": "geographical_coverage",
         "machine_name": "field_wbddh_country",
-        "list_value_name": "Region\/Country not specified",
+        "list_value_name": "Region/Country not specified",
         "tid": "874"
     },
     {
@@ -3884,7 +3926,7 @@
     {
         "vocabulary_name": "periodicity",
         "machine_name": "field_wbddh_periodicity",
-        "list_value_name": "Hour\/Minute\/Second",
+        "list_value_name": "Hour/Minute/Second",
         "tid": "475"
     },
     {
@@ -4268,7 +4310,7 @@
     {
         "vocabulary_name": "exception'",
         "machine_name": "field_exception_s_",
-        "list_value_name": "2. Communications of Governors\/Executive Directors",
+        "list_value_name": "2. Communications of Governors/Executive Directors",
         "tid": "1203"
     },
     {
@@ -4280,7 +4322,7 @@
     {
         "vocabulary_name": "exception'",
         "machine_name": "field_exception_s_",
-        "list_value_name": "4. Attorney\/Client Privilege",
+        "list_value_name": "4. Attorney/Client Privilege",
         "tid": "1211"
     },
     {
@@ -4298,13 +4340,13 @@
     {
         "vocabulary_name": "exception'",
         "machine_name": "field_exception_s_",
-        "list_value_name": "7. Member Countries\/Third Party Confidence",
+        "list_value_name": "7. Member Countries/Third Party Confidence",
         "tid": "1208"
     },
     {
         "vocabulary_name": "exception'",
         "machine_name": "field_exception_s_",
-        "list_value_name": "8. Corporate\/Administrative Matters",
+        "list_value_name": "8. Corporate/Administrative Matters",
         "tid": "1214"
     },
     {
@@ -4316,7 +4358,7 @@
     {
         "vocabulary_name": "exception'",
         "machine_name": "field_exception_s_",
-        "list_value_name": "10a-c. Financial Information - Forecast\/Analysis\/Transactions",
+        "list_value_name": "10a-c. Financial Information - Forecast/Analysis/Transactions",
         "tid": "1198"
     },
     {
@@ -4358,7 +4400,7 @@
     {
         "vocabulary_name": "periodicty",
         "machine_name": "field_frequency",
-        "list_value_name": "Hour\/Minute\/Second",
+        "list_value_name": "Hour/Minute/Second",
         "tid": 11
     },
     {

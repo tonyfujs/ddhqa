@@ -22,6 +22,8 @@ check_next_update <- function(metadata_dataset,
   update_schedule <- unlist(metadata_dataset[["field_wbddh_update_schedule"]], use.names = FALSE)
   modified <- unlist(metadata_dataset[["field_wbddh_modified_date"]][["und"]][[1]][["value"]], use.names = FALSE)
   modified_date <- as.Date(modified)
+  update <- unlist(metadata_dataset[["field_wbddh_next_expected_update"]][["und"]][[1]][["value"]], use.names = FALSE)
+  update_date <- ifelse(!is_blank(update), as.Date(update), '')
 
   if (!is_blank(update_freq)) {
 
@@ -70,6 +72,7 @@ check_next_update <- function(metadata_dataset,
   }
   return(out)
 }
+
 
 
 use_update_schedule <- function(dataset_nid, update_schedule, modified_date) {

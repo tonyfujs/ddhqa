@@ -4,11 +4,11 @@ context("Tests check for next update date")
 # will need to update checks depending current day
 test_that("Creates correct date from list of months", {
   expect_equal(
-    get_update_months("Jan, Apr, July, Sep", month.abb),
+    get_update_months("Jan, Apr, Jul, Sep", month.abb),
     as.Date("2018-04-01")
   )
   expect_equal(
-    get_update_months("Jan,Apr,July,Sep", month.abb),
+    get_update_months("Jan,Apr,Jul,Sep", month.abb),
     as.Date("2018-04-01")
   )
   expect_equal(
